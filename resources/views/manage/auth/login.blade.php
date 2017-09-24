@@ -25,26 +25,22 @@
 
     <div class="form-signin" action="index.html">
         <div class="form-signin-heading text-center">
-            <h1 class="sign-title">客户关系管理系统</h1>
+            <h1 class="sign-title">管理系统登录</h1>
             <img src="/style/media/image/logo.png" width="70%" alt=""/>
         </div>
         <div class="login-wrap">
-            <form method="post" action="{{ route('admin.login') }}">
+            <form method="post" action="{{ route('manage.login') }}">
                 {{ csrf_field() }}
-                <input type="text" class="form-control" placeholder="输入用户名" autofocus name="name" value="{{ session('_old_input')['name'] }}" required>
+                <input type="text" class="form-control" placeholder="输入邮箱" autofocus name="email" value="{{ session('_old_input')['email'] }}" required>
                 <input type="password" class="form-control" placeholder="密码" name="password" required>
-                <input class="form-control" type="text" placeholder="验证码" name="code" autocomplete="off" required>
-                <img  height="40" style="margin-bottom: 1em;" alt="验证码" title="点击刷新" src="{{ route('captcha', ['group' => 'login']) }}" onclick="javascript:this.src=this.src+'?time='+Math.random()">
                 <!--错误输出-->
                 <div class="form-group">
                     <div class="alert alert-danger fade in @if(!count($errors) > 0) hidden @endif" id="alert_error">
                         <a href="#" class="close" data-dismiss="alert">×</a>
                         <span>
-                            @if ($errors->has('name') || $errors->has('password'))
-                                用户名或密码错误！
-                            @elseif ($errors->has('code'))
-                                验证码错误！
-                            @endif
+                            @foreach($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
                         </span>
                     </div>
                 </div>
@@ -53,7 +49,7 @@
                 </button>
             </form>
             <div class="registration">
-                帐号请向管理员申请！
+                帐号须由管理员注册！
             </div>
         </div>
     </div>
