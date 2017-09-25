@@ -19,4 +19,9 @@ class Order extends Model
     {
         return $this->hasOne('App\Manager', 'id');
     }
+
+    public function commodity()
+    {
+        return $this->hasOne('App\Commodity', 'id');
+    }
 }
