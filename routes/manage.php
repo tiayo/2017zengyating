@@ -14,6 +14,7 @@ $this->group(['namespace' => 'Manage', 'prefix' => 'manage'], function () {
         //预约相关（普通用户）
         $this->get('/manager_order/list/', 'OrderController@managerListView')->name('manager_order_list');
         $this->get('/manager_order/list/{keyword}', 'OrderController@managerListView')->name('manager_order_search');
+        $this->get('/order/status/{order_id}/{status}', 'OrderController@changeStatus')->name('order_status');
 
         //管理员才可以操作
         $this->group(['middleware' => 'admin'], function () {

@@ -42,6 +42,7 @@
                             <th>总价格</th>
                             <th>预定时间</th>
                             <th>预定理发师</th>
+                            <th>状态</th>
                             <th>创建时间</th>
 							<th>操作</th>
 		                </tr>
@@ -61,10 +62,28 @@
                             <td>{{ $list['price'] }}</td>
                             <td>{{ $list['order_time'] }}</td>
                             <td>{{ $list->manager->name}}</td>
+                            <td>{{ config('site.order_status')[$list['status']] }}</td>
                             <td>{{ $list['created_at'] }}</td>
                             <td>
-                                <button class="btn btn-info" type="button" onclick="location='{{ route('order_update', ['id' => $list['id'] ]) }}'">编辑</button>
-                                <button class="btn btn-danger" type="button" onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('order_destroy', ['id' => $list['id'] ]) }}'">删除</button>
+                                <div class="btn-group">
+                                    <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button" id="btnGroupDrop1">
+                                        选择操作 <span class="caret"></span>
+                                    </button>
+                                    <ul aria-labelledby="btnGroupDrop1" role="menu" class="dropdown-menu">
+                                        @foreach(config('site.order_status') as $key => $order_status)
+                                            <li>
+                                                <a href="{{ route('order_status', ['order_id' => $list['id'], 'status' => $key]) }}"
+                                                   onClick="return confirm('“确定”将会执行一系列不可恢复的操作，请选择：?');">
+                                                    {{ $order_status }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @if ($sign == 'admin')
+                                    <button class="btn btn-info" type="button" onclick="location='{{ route('order_update', ['id' => $list['id'] ]) }}'">编辑</button>
+                                    <button class="btn btn-danger" type="button" onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('order_destroy', ['id' => $list['id'] ]) }}'">删除</button>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->float('price');
             $table->dateTime('order_time');
             $table->integer('manager_id');
+            $table->integer('status');
             $table->timestamps();
         });
     }

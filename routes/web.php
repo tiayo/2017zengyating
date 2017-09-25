@@ -1,7 +1,9 @@
 <?php
 
 $this->group(['namespace' => 'Home'], function () {
-    $this->get('/', 'IndexController@index');
+    $this->get('/', function () {
+        return redirect()->route('manage');
+    });
     $this->get('login', 'Auth\LoginController@showLoginForm')->name('home.login');
     $this->get('login', 'Auth\LoginController@showLoginForm')->name('home.login');
     $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('home.login');

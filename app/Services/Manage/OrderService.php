@@ -27,11 +27,16 @@ class OrderService
      */
     public function validata($id)
     {
-        $salesman = $this->order->first($id);
+        $first = $this->order->first($id);
 
-        throw_if(empty($salesman), Exception::class, '未找到该记录！', 404);
+        throw_if(empty($first), Exception::class, '未找到该记录！', 404);
 
-        return $salesman;
+        //权限验证
+        if (!can('admin', null, 'manager')) {
+            throw_if(!can('control', $first, 'manager'), Exception::class, '没有权限！', 403);
+        }
+
+        return $first;
     }
 
     /**
@@ -60,6 +65,21 @@ class OrderService
         }
 
         return $this->order->managerGet($num);
+    }
+
+    /**
+     * 修改状态
+     *
+     * @param $order_id
+     * @param $status
+     * @return mixed
+     */
+    public function changeStatus($order_id, $status)
+    {
+        //权限验证
+        $this->validata($order_id);
+
+        return $this->order->update($order_id, ['status' => $status]);
     }
 
     /**

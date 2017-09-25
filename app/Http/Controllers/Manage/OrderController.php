@@ -65,6 +65,20 @@ class OrderController extends Controller
     }
 
     /**
+     * 修改状态
+     *
+     * @param $order_id
+     * @param $status
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function changeStatus($order_id, $status)
+    {
+       if ($this->order->changeStatus($order_id, $status)) {
+           return redirect()->back();
+       }
+    }
+
+    /**
      * 添加管理员视图
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
