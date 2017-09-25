@@ -45,7 +45,7 @@
                             <td>{{ $list['id'] }}</td>
                             <td>{{ $list['name'] }}</td>
                             <td>{{ $list['email'] }}</td>
-                            <td>{{ $list->profile->points }}</td>
+                            <td>{{ $list->profile->score }}</td>
                             <td>{{ $list['created_at'] }}</td>
                             <td>
                                 <button class="btn btn-info" type="button"

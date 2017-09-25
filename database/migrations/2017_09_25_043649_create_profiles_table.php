@@ -16,8 +16,8 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('phone')->nullable();
-            $table->integer('points')->default(0);
+            $table->integer('phone')->nullable(); //电话
+            $table->integer('score')->default(0); //积分
             $table->timestamps();
         });
     }

@@ -2,10 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Group;
 use App\Manager;
-use App\User;
-use Illuminate\Support\Facades\Auth;
 
 class ManagerRepository
 {

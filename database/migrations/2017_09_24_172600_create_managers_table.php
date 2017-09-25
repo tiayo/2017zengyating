@@ -18,7 +18,7 @@ class CreateManagersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('introduce');
-            $table->integer('type')->default(0);
+            $table->integer('type')->default(0); //类型
             $table->string('phone');
             $table->string('password');
             $table->rememberToken();

@@ -26,6 +26,15 @@ $this->group(['namespace' => 'Manage', 'prefix' => 'manage'], function () {
             $this->get('/user/list/', 'UserController@listView')->name('user_list');
             $this->get('/user/list/{keyword}', 'UserController@listView')->name('user_search');
             $this->get('/user/destroy/{id}', 'UserController@destroy')->name('user_destroy');
+
+            //商品相关
+            $this->get('/commodity/list/', 'CommodityController@listView')->name('commodity_list');
+            $this->get('/commodity/list/{keyword}', 'CommodityController@listView')->name('commodity_search');
+            $this->get('/commodity/add', 'CommodityController@addView')->name('commodity_add');
+            $this->post('/commodity/add', 'CommodityController@post');
+            $this->get('/commodity/update/{id}', 'CommodityController@updateView')->name('commodity_update');
+            $this->post('/commodity/update/{id}', 'CommodityController@post');
+            $this->get('/commodity/destroy/{id}', 'CommodityController@destroy')->name('commodity_destroy');
         });
     });
 });
