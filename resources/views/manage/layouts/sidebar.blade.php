@@ -6,6 +6,7 @@
                 <li id="nav_0_1"><a href="{{ route('manager_list') }}">理发师管理</a></li>
                 <li id="nav_0_2"><a href="{{ route('manager_list') }}">会员管理</a></li>
                 <li id="nav_0_3"><a href="{{ route('commodity_list') }}">商品管理</a></li>
+                <li id="nav_0_4"><a href="{{ route('order_list') }}">预约管理</a></li>
             </ul>
         </li>
     @endif

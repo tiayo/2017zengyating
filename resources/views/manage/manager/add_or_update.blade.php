@@ -83,6 +83,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="status" class="col-sm-2 col-sm-2 control-label">预约</label>
+                        <div class="col-sm-3">
+                            <select class="form-control m-bot15" id="status" name="status" required>
+                                <option value="1">可预约</option>
+                                <option value="0">不可预约</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div  class="col-sm-2 col-sm-2 control-label">
                             <button class="btn btn-success" type="submit"><i class="fa fa-cloud-upload"></i> 确认提交</button>
                         </div>

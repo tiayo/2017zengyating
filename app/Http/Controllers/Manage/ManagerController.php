@@ -81,6 +81,7 @@ class ManagerController extends Controller
             'phone' => 'required|numeric',
             'type' => 'required|max:2',
             'introduce' => 'required',
+            'status' => 'required|integer|min:0|max:1',
             'password' => 'min:6',
         ]);
 

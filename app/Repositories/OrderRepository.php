@@ -2,24 +2,24 @@
 
 namespace App\Repositories;
 
-use App\Commodity;
+use App\Order;
 
-class CommodityRepository
+class OrderRepository
 {
-    protected $commodity;
+    protected $order;
 
-    public function __construct(Commodity $commodity)
+    public function __construct(Order $order)
     {
-        $this->commodity = $commodity;
+        $this->order = $order;
     }
 
     public function create($data)
     {
-        return $this->commodity->create($data);
+        return $this->order->create($data);
     }
 
     /**
-     * 获取所有显示记录（带分页）
+     * 获取所有显示记录（过滤管理员）
      *
      * @param $page
      * @param $num
@@ -27,39 +27,9 @@ class CommodityRepository
      */
     public function get($num)
     {
-        return $this->commodity
+        return $this->order
             ->orderBy('id', 'desc')
             ->paginate($num);
-    }
-
-    /**
-     * 获取所有显示记录(简易)
-     *
-     * @param $page
-     * @param $num
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function getSimple(...$select)
-    {
-        return $this->commodity
-            ->select($select)
-            ->orderBy('id', 'desc')
-            ->get();
-    }
-
-    public function getValue($array)
-    {
-        $score = $this->commodity
-            ->whereIn('id', $array)
-            ->orderBy('id', 'desc')
-            ->sum('score');
-
-        $price = $this->commodity
-            ->whereIn('id', $array)
-            ->orderBy('id', 'desc')
-            ->sum('price');
-
-        return ['score' => $score, 'price' => $price];
     }
 
     /**
@@ -71,9 +41,10 @@ class CommodityRepository
      */
     public function getSearch($num, $keyword)
     {
-        return $this->commodity
+        return $this->order
             ->where(function ($query) use ($keyword) {
-                $query->where('commodities.name', 'like', "%$keyword%");
+                $query->where('orders.name', 'like', "%$keyword%")
+                    ->orwhere('orders.email', 'like', "%$keyword%");
             })
             ->orderBy('id', 'desc')
             ->paginate($num);
@@ -81,33 +52,33 @@ class CommodityRepository
     
     public function first($id)
     {
-        return $this->commodity->find($id);
+        return $this->order->find($id);
     }
 
     public function superId()
     {
-        return $this->commodity
+        return $this->order
             ->where('name', config('site.admin_name'))
             ->first();
     }
 
     public function destroy($id)
     {
-        return $this->commodity
+        return $this->order
             ->where('id', $id)
             ->delete();
     }
 
     public function countGroup($group_id)
     {
-        return $this->commodity
+        return $this->order
             ->where('group', $group_id)
             ->count();
     }
 
     public function selectFirst($where, ...$select)
     {
-        return $this->commodity
+        return $this->order
             ->select($select)
             ->where($where)
             ->first();
@@ -115,7 +86,7 @@ class CommodityRepository
 
     public function update($id, $data)
     {
-        return $this->commodity
+        return $this->order
             ->where('id', $id)
             ->update($data);
     }

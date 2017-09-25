@@ -1,6 +1,6 @@
 @extends('manage.layouts.app')
 
-@section('title', '理发师列表')
+@section('title', '预约管理')
 
 @section('style')
     @parent
@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <li navValue="nav_0"><a href="#">管理员专区</a></li>
-    <li navValue="nav_0_1"><a href="#">理发师列表</a></li>
+    <li navValue="nav_0_4"><a href="#">预约管理</a></li>
 @endsection
 
 @section('body')
@@ -17,28 +17,28 @@
 		<section class="panel">
             <div class="panel-body">
                 <form class="form-inline" id="search_form">
-                    <button type="button" class="btn btn-success" onclick="location='{{ route('manager_add') }}'">添加理发师</button>
+                    <button type="button" class="btn btn-success" onclick="location='{{ route('order_add') }}'">添加预约</button>
                     <div class="form-group">
                         <label class="sr-only" for="search"></label>
                         <input type="text" class="form-control" id="search" name="keyword"
-                               value="{{ Request::get('keyword') }}" placeholder="输入姓名或邮箱" required>
+                               value="{{ Request::get('keyword') }}" placeholder="输入用户名" required>
                     </div>
                     <button type="submit" class="btn btn-primary" id="salesman_search">搜索</button>
                 </form>
             <header class="panel-heading">
-                理发师列表
+                预约列表
             </header>
             	<table class="table table-striped table-hover">
 		            <thead>
 		                <tr>
 		                    <th>ID</th>
-		                    <th>姓名</th>
-		                    <th>电话</th>
-		                    <th>邮箱</th>
-                            <th>级别</th>
-                            <th>介绍</th>
-                            <th>状态</th>
-                            <th>添加时间</th>
+		                    <th>用户</th>
+		                    <th>商品</th>
+		                    <th>总积分</th>
+                            <th>总价格</th>
+                            <th>预定时间</th>
+                            <th>预定理发师</th>
+                            <th>创建时间</th>
 							<th>操作</th>
 		                </tr>
 		            </thead>
@@ -47,22 +47,20 @@
                         @foreach($lists as $list)
                         <tr>
                             <td>{{ $list['id'] }}</td>
-                            <td>{{ $list['name'] }}</td>
-                            <td>{{ $list['phone'] }}</td>
-                            <td>{{ $list['email'] }}</td>
-                            <td>{{ config('site.manager_group')[$list['type']] }}</td>
-                            <td>{{ $list['introduce']}}</td>
+                            <td>{{ $list->user->name }}</td>
                             <td>
-                                @if($list['status'] == 1)
-                                    可预约
-                                    @else
-                                    不可预约
-                                @endif
+                                @foreach($list['commodity'] as $commodity)
+                                    {{ $list->commodity->name }}
+                                @endforeach
                             </td>
+                            <td>{{ $list['score'] }}</td>
+                            <td>{{ $list['price'] }}</td>
+                            <td>{{ $list['order_time'] }}</td>
+                            <td>{{ $list->manager->name}}</td>
                             <td>{{ $list['created_at'] }}</td>
                             <td>
-                                <button class="btn btn-info" type="button" onclick="location='{{ route('manager_update', ['id' => $list['id'] ]) }}'">编辑</button>
-                                <button class="btn btn-danger" type="button" onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('manager_destroy', ['id' => $list['id'] ]) }}'">删除</button>
+                                <button class="btn btn-info" type="button" onclick="location='{{ route('order_update', ['id' => $list['id'] ]) }}'">编辑</button>
+                                <button class="btn btn-danger" type="button" onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('order_destroy', ['id' => $list['id'] ]) }}'">删除</button>
                             </td>
                         </tr>
                         @endforeach
@@ -91,7 +89,7 @@
                     return false;
                 }
 
-                window.location = '{{ route('manager_search', ['keyword' => '']) }}/' + stripscript(keyword);
+                window.location = '{{ route('order_search', ['keyword' => '']) }}/' + stripscript(keyword);
 
                 return false;
             });

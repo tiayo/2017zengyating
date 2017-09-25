@@ -34,7 +34,9 @@ class ManagerService
     /**
      * 获取需要的数据
      *
-     * @return mixed
+     * @param int $num
+     * @param null $keyword
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function get($num = 10000, $keyword = null)
     {
@@ -43,6 +45,16 @@ class ManagerService
         }
 
         return $this->manager->get($num);
+    }
+
+    /**
+     * 获取需要的数据
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getAvailable(...$select)
+    {
+        return $this->manager->getAvailable(...$select);
     }
 
     /**
@@ -75,6 +87,7 @@ class ManagerService
         $data['phone'] = $post['phone'];
         $data['type'] = $post['type'];
         $data['introduce'] = $post['introduce'];
+        $data['status'] = $post['status'];
 
         //密码
         if (isset($post['password'])) {

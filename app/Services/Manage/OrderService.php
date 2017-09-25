@@ -2,15 +2,18 @@
 
 namespace App\Services\Manage;
 
-use App\Repositories\CommodityRepository;
+use App\Repositories\OrderRepository;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
-class CommodityService
+class OrderService
 {
+    protected $order;
     protected $commodity;
 
-    public function __construct(CommodityRepository $commodity)
+    public function __construct(OrderRepository $order, CommodityService $commodity)
     {
+        $this->order = $order;
         $this->commodity = $commodity;
     }
 
@@ -24,7 +27,7 @@ class CommodityService
      */
     public function validata($id)
     {
-        $salesman = $this->commodity->first($id);
+        $salesman = $this->order->first($id);
 
         throw_if(empty($salesman), Exception::class, '未找到该记录！', 404);
 
@@ -39,27 +42,10 @@ class CommodityService
     public function get($num = 10000, $keyword = null)
     {
         if (!empty($keyword)) {
-            return $this->commodity->getSearch($num, $keyword);
+            return $this->order->getSearch($num, $keyword);
         }
 
-        return $this->commodity->get($num);
-    }
-
-    /**
-     * 获取需要的数据
-     *
-     * @param array ...$select
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function getSimple(...$select)
-    {
-        return $this->commodity->getSimple(...$select);
-    }
-
-
-    public function getValue($array)
-    {
-        return $this->commodity->getValue($array);
+        return $this->order->get($num);
     }
 
     /**
@@ -83,13 +69,18 @@ class CommodityService
     public function updateOrCreate($post, $id = null)
     {
         //统计数据
-        $data['name'] = $post['name'];
-        $data['price'] = $post['price'];
-        $data['score'] = $post['score'];
-        $data['description'] = $post['description'];
+        $data['user_id'] = Auth::guard('web')->id();
+        $data['commodity'] = serialize($post['commodity']);
+        $data['manager_id'] = $post['manager_id'];
+        $data['order_time'] = $post['order_time'];
+
+        //总积分\总价格
+        $value = $this->commodity->getValue($post['commodity']);
+        $data['score'] = $value['score'];
+        $data['price'] = $value['price'];
 
         //执行插入或更新
-        return empty($id) ? $this->commodity->create($data) : $this->commodity->update($id, $data);
+        return empty($id) ? $this->order->create($data) : $this->order->update($id, $data);
     }
 
     /**
@@ -104,11 +95,11 @@ class CommodityService
         $this->validata($id)->toArray();
 
         //执行删除
-        return $this->commodity->destroy($id);
+        return $this->order->destroy($id);
     }
 
     public function countGroup($group_id)
     {
-        return $this->commodity->countGroup($group_id);
+        return $this->order->countGroup($group_id);
     }
 }

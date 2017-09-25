@@ -33,6 +33,22 @@ class ManagerRepository
     }
 
     /**
+     * 获取可用的记录
+     *
+     * @param $page
+     * @param $num
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getAvailable(...$select)
+    {
+        return $this->manager
+            ->select($select)
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    /**
      * 获取显示的搜索结果（超级管理员级）
      *
      * @param $num
