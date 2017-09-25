@@ -17,6 +17,9 @@ class CreateManagersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('introduce');
+            $table->integer('type')->default(0);
+            $table->string('phone');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
