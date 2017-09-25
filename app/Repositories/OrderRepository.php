@@ -2,15 +2,22 @@
 
 namespace App\Repositories;
 
+use App\Manager;
 use App\Order;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class OrderRepository
 {
     protected $order;
+    protected $user;
+    protected $manager;
 
-    public function __construct(Order $order)
+    public function __construct(Order $order, User $user, Manager $manager)
     {
         $this->order = $order;
+        $this->user = $user;
+        $this->manager = $manager;
     }
 
     public function create($data)
@@ -19,7 +26,7 @@ class OrderRepository
     }
 
     /**
-     * 获取所有显示记录（过滤管理员）
+     * 获取所有显示记录（管理员级别）
      *
      * @param $page
      * @param $num
@@ -33,7 +40,22 @@ class OrderRepository
     }
 
     /**
-     * 获取显示的搜索结果（超级管理员级）
+     * 获取所有显示记录（理发师级别）
+     *
+     * @param $page
+     * @param $num
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function managerGet($num)
+    {
+        return $this->order
+            ->where('manager_id', Auth::guard('manager')->id())
+            ->orderBy('id', 'desc')
+            ->paginate($num);
+    }
+
+    /**
+     * 获取显示的搜索结果（管理员级）
      *
      * @param $num
      * @param $keyword
@@ -41,11 +63,36 @@ class OrderRepository
      */
     public function getSearch($num, $keyword)
     {
+        $array = $this->user
+                ->select('id')
+                ->where('name', 'like', "%$keyword%")
+                ->get()
+                ->toArray();
+
         return $this->order
-            ->where(function ($query) use ($keyword) {
-                $query->where('orders.name', 'like', "%$keyword%")
-                    ->orwhere('orders.email', 'like', "%$keyword%");
-            })
+            ->where('manager_id', Auth::guard('manager')->id())
+            ->whereIn('user_id', $array)
+            ->orderBy('id', 'desc')
+            ->paginate($num);
+    }
+
+    /**
+     * 获取显示的搜索结果（理发师级）
+     *
+     * @param $num
+     * @param $keyword
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getManageSearch($num, $keyword)
+    {
+        $array = $this->manager
+            ->select('id')
+            ->where('name', 'like', "%$keyword%")
+            ->get()
+            ->toArray();
+
+        return $this->order
+            ->whereIn('manager_id', $array)
             ->orderBy('id', 'desc')
             ->paginate($num);
     }

@@ -35,7 +35,7 @@ class OrderService
     }
 
     /**
-     * 获取需要的数据
+     * 获取需要的数据(管理员级别)
      *
      * @return mixed
      */
@@ -46,6 +46,20 @@ class OrderService
         }
 
         return $this->order->get($num);
+    }
+
+    /**
+     * 获取需要的数据(理发师级别)
+     *
+     * @return mixed
+     */
+    public function managerGet($num = 10000, $keyword = null)
+    {
+        if (!empty($keyword)) {
+            return $this->order->getSearch($num, $keyword);
+        }
+
+        return $this->order->managerGet($num);
     }
 
     /**

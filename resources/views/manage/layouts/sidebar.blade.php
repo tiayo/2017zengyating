@@ -13,7 +13,7 @@
 
     <li class="menu-list" id="nav_1"><a href=""><i class="fa fa-user"></i> <span>预约专区</span></a>
         <ul class="sub-menu-list">
-            <li id="nav_1_1"><a href="{{ route('manager_list') }}">我的预约</a></li>
+            <li id="nav_1_1"><a href="{{ route('manager_order_list') }}">我的预约</a></li>
         </ul>
     </li>
 </ul>

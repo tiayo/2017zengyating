@@ -11,6 +11,10 @@ $this->group(['namespace' => 'Manage', 'prefix' => 'manage'], function () {
         //首页
         $this->get('/', 'IndexController@index')->name('manage');
 
+        //预约相关（普通用户）
+        $this->get('/manager_order/list/', 'OrderController@managerListView')->name('manager_order_list');
+        $this->get('/manager_order/list/{keyword}', 'OrderController@managerListView')->name('manager_order_search');
+
         //管理员才可以操作
         $this->group(['middleware' => 'admin'], function () {
             //理发师相关

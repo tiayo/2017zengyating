@@ -40,6 +40,27 @@ class OrderController extends Controller
 
         return view('manage.order.list', [
             'lists' => $orders,
+            'search_url' => route('order_search', ['keyword' => '']),
+            'sign' => 'admin',
+        ]);
+    }
+
+    /**
+     * 理发师列表
+     *
+     * @param $keyword
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function managerListView($keyword = null)
+    {
+        $num = config('site.list_num');
+
+        $orders = $this->order->managerGet($num, $keyword);
+
+        return view('manage.order.list', [
+            'lists' => $orders,
+            'search_url' => route('manager_order_search', ['keyword' => '']),
+            'sign' => 'manager',
         ]);
     }
 

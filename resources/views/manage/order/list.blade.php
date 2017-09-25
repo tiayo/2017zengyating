@@ -7,8 +7,13 @@
 @endsection
 
 @section('breadcrumb')
-    <li navValue="nav_0"><a href="#">管理员专区</a></li>
-    <li navValue="nav_0_4"><a href="#">预约管理</a></li>
+    @if ($sign == 'admin')
+        <li navValue="nav_0"><a href="#">管理员专区</a></li>
+        <li navValue="nav_0_4"><a href="#">预约管理</a></li>
+    @elseif($sign == 'manager')
+        <li navValue="nav_1"><a href="#">管理员专区</a></li>
+        <li navValue="nav_1_1"><a href="#">预约管理</a></li>
+    @endif
 @endsection
 
 @section('body')
@@ -17,7 +22,6 @@
 		<section class="panel">
             <div class="panel-body">
                 <form class="form-inline" id="search_form">
-                    <button type="button" class="btn btn-success" onclick="location='{{ route('order_add') }}'">添加预约</button>
                     <div class="form-group">
                         <label class="sr-only" for="search"></label>
                         <input type="text" class="form-control" id="search" name="keyword"
@@ -89,7 +93,7 @@
                     return false;
                 }
 
-                window.location = '{{ route('order_search', ['keyword' => '']) }}/' + stripscript(keyword);
+                window.location = '{{ $search_url }}/' + stripscript(keyword);
 
                 return false;
             });
