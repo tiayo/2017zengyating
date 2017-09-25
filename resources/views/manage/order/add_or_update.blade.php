@@ -40,7 +40,7 @@
                         <div class="col-sm-3">
                             @foreach($commodities as $commodity)
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" name="commodity[]" value="{{ $commodity['id'] }}">{{ $commodity['name'] }}
+                                    <input type="checkbox" id="commodity_{{ $commodity['id'] }}" name="commodity[]" value="{{ $commodity['id'] }}">{{ $commodity['name'] }}
                                 </label>
                             @endforeach
                         </div>
@@ -59,7 +59,7 @@
                         <label for="order_time" class="col-sm-2 col-sm-2 control-label">时间</label>
                         <div class="col-sm-3">
                             <input type="hidden" name="order_time" value="date">
-                            <input type="text" class="form-control" id="order_time" name="order_time"  value="" placeholder="Select Time.." required>
+                            <input type="text" class="form-control" id="order_time" name="order_time"  value="{{ $old_input['order_time'] }}" placeholder="Select Time.." required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -82,8 +82,15 @@
             flatpickr("#order_time", {
                 enableTime: true,
                 altInput: true,
-                altFormat: "Y-m-d H:i:S"
+                altFormat: "Y-m-d H:00:00"
             });
+
+            //商品选中
+            @if (!empty($old_input['commodity']))
+                @foreach(unserialize($old_input['commodity']) as $commodity)
+                    $("#commodity_{{ $commodity }}").attr('checked', 'checked');
+                @endforeach
+            @endif
 
             $('#password').bind('input propertychange', function() {
                 $(this).attr('name', 'password')

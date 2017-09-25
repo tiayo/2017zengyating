@@ -3,6 +3,7 @@
 namespace App\Services\Manage;
 
 use App\Repositories\OrderRepository;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,6 +103,9 @@ class OrderService
      */
     public function updateOrCreate($post, $id = null)
     {
+        //判断时间段是否可以预约
+        $this->canOrder($post, $id);
+
         //统计数据
         $data['user_id'] = Auth::guard('web')->id();
         $data['commodity'] = serialize($post['commodity']);
@@ -115,6 +119,39 @@ class OrderService
 
         //执行插入或更新
         return empty($id) ? $this->order->create($data) : $this->order->update($id, $data);
+    }
+
+    public function canOrder($post, $id)
+    {
+        $start_time = Carbon::parse($post['order_time'])->toDateTimeString();
+        $end_time = Carbon::parse($start_time)->addHours(1)->toDateTimeString();
+
+        //添加操作时执行
+        if (empty($id)) {
+            //已经预约
+            $where = [
+                ['order_time', '>=', Carbon::now()->toDateTimeString()],
+                ['user_id', Auth::guard('web')->id()]
+            ];
+            throw_if($this->order->count($where) >= 1, Exception::class, '您还有未到时间的预约，请关注！', '403');
+        }
+
+        //预约超过上限
+        $where = [
+            ['order_time', '>=', $start_time],
+            ['order_time', '<=', $end_time],
+            ['manager_id', $post['manager_id']],
+        ];
+
+        //更新操作时，去除自身
+        if(!empty($id)) {
+            $where = array_merge($where, [['id', '<>', $id]]);
+        }
+
+        //判断预约超过上限
+        throw_if($this->order->count($where) >= 2, Exception::class, '该时段已经有两个预约啦,请选择其他时间！', '403');
+
+        return true;
     }
 
     /**

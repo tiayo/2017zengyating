@@ -131,6 +131,13 @@ class OrderRepository
             ->first();
     }
 
+    public function count($where)
+    {
+        return $this->order
+            ->where($where)
+            ->count();
+    }
+
     public function update($id, $data)
     {
         return $this->order

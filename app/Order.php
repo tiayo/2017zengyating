@@ -17,7 +17,7 @@ class Order extends Model
 
     public function manager()
     {
-        return $this->hasOne('App\Manager', 'id');
+        return $this->belongsTo('App\Manager', 'manager_id');
     }
 
     public function commodity()

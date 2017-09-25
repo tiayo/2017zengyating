@@ -5,9 +5,9 @@ $this->group(['namespace' => 'Home'], function () {
         return redirect()->route('manage');
     });
     $this->get('login', 'Auth\LoginController@showLoginForm')->name('home.login');
-    $this->get('login', 'Auth\LoginController@showLoginForm')->name('home.login');
-    $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('home.login');
-    $this->post('register', 'Auth\RegisterController@register')->name('home.login');
+    $this->post('login', 'Auth\LoginController@login');
+    $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('home.register');
+    $this->post('register', 'Auth\RegisterController@register')->name('home.register');
     $this->post('login', 'Auth\LoginController@login');
     $this->get('logout', 'Auth\LoginController@logout')->name('home.logout');
 

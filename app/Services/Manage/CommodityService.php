@@ -56,7 +56,12 @@ class CommodityService
         return $this->commodity->getSimple(...$select);
     }
 
-
+    /**
+     * 获取数组内记录的总积分、总价格
+     *
+     * @param $array
+     * @return array
+     */
     public function getValue($array)
     {
         return $this->commodity->getValue($array);

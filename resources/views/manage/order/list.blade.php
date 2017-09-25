@@ -22,6 +22,9 @@
 		<section class="panel">
             <div class="panel-body">
                 <form class="form-inline" id="search_form">
+                    @if ($sign == 'admin')
+                    <button type="button" class="btn btn-success" onclick="location='{{ route('order_add') }}'">添加预约</button>
+                    @endif
                     <div class="form-group">
                         <label class="sr-only" for="search"></label>
                         <input type="text" class="form-control" id="search" name="keyword"
@@ -61,7 +64,7 @@
                             <td>{{ $list['score'] }}</td>
                             <td>{{ $list['price'] }}</td>
                             <td>{{ $list['order_time'] }}</td>
-                            <td>{{ $list->manager->name}}</td>
+                            <td>{{ $list->manager->name }}</td>
                             <td>{{ config('site.order_status')[$list['status']] }}</td>
                             <td>{{ $list['created_at'] }}</td>
                             <td>
