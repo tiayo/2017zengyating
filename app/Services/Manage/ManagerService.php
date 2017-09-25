@@ -2,9 +2,7 @@
 
 namespace App\Services\Manage;
 
-use App\Events\AddMessage;
 use App\Repositories\ManagerRepository;
-use Illuminate\Support\Facades\Auth;
 use Exception;
 
 class ManagerService
@@ -99,13 +97,10 @@ class ManagerService
     public function destroy($id)
     {
         //验证是否可以操作当前记录
-        $orgin = $this->validata($id)->toArray();
+        $this->validata($id)->toArray();
 
         //执行删除
-        $this->manager->destroy($id);
-
-        //执行写入消息事件
-        return event(new AddMessage('salesman', 3, [], $orgin));
+        return $this->manager->destroy($id);
     }
 
     public function countGroup($group_id)

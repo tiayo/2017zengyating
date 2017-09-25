@@ -1,6 +1,6 @@
 @extends('manage.layouts.app')
 
-@section('title', '理发师列表')
+@section('title', '会员管理')
 
 @section('style')
     @parent
@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <li navValue="nav_0"><a href="#">管理员专区</a></li>
-    <li navValue="nav_0_1"><a href="#">理发师列表</a></li>
+    <li navValue="nav_0_2"><a href="#">会员管理</a></li>
 @endsection
 
 @section('body')
@@ -17,7 +17,6 @@
 		<section class="panel">
             <div class="panel-body">
                 <form class="form-inline" id="search_form">
-                    <button type="button" class="btn btn-success" onclick="location='{{ route('manager_add') }}'">添加理发师</button>
                     <div class="form-group">
                         <label class="sr-only" for="search"></label>
                         <input type="text" class="form-control" id="search" name="keyword"
@@ -26,18 +25,16 @@
                     <button type="submit" class="btn btn-primary" id="salesman_search">搜索</button>
                 </form>
             <header class="panel-heading">
-                理发师列表
+                会员列表
             </header>
             	<table class="table table-striped table-hover">
 		            <thead>
 		                <tr>
 		                    <th>ID</th>
 		                    <th>姓名</th>
-		                    <th>电话</th>
-		                    <th>邮箱</th>
-                            <th>级别</th>
-                            <th>介绍</th>
-                            <th>添加时间</th>
+		                    <th>email</th>
+                            <th>积分</th>
+                            <th>注册时间</th>
 							<th>操作</th>
 		                </tr>
 		            </thead>
@@ -47,14 +44,18 @@
                         <tr>
                             <td>{{ $list['id'] }}</td>
                             <td>{{ $list['name'] }}</td>
-                            <td>{{ $list['phone'] }}</td>
                             <td>{{ $list['email'] }}</td>
-                            <td>{{ config('site.manager_group')[$list['type']] }}</td>
-                            <td>{{ $list['introduce'] or '暂无'}}</td>
+                            <td>{{ $list->profile->points }}</td>
                             <td>{{ $list['created_at'] }}</td>
                             <td>
-                                <button class="btn btn-info" type="button" onclick="location='{{ route('manager_update', ['id' => $list['id'] ]) }}'">编辑</button>
-                                <button class="btn btn-danger" type="button" onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('manager_destroy', ['id' => $list['id'] ]) }}'">删除</button>
+                                <button class="btn btn-info" type="button"
+                                        onclick="location=''">
+                                    查看预约
+                                </button>
+                                <button class="btn btn-danger" type="button"
+                                        onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('user_destroy', ['id' => $list['id'] ]) }}'">
+                                    删除会员
+                                </button>
                             </td>
                         </tr>
                         @endforeach
@@ -83,7 +84,7 @@
                     return false;
                 }
 
-                window.location = '{{ route('manager_search', ['keyword' => '']) }}/' + stripscript(keyword);
+                window.location = '{{ route('user_search', ['keyword' => '']) }}/' + stripscript(keyword);
 
                 return false;
             });
