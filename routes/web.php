@@ -15,7 +15,8 @@ $this->group(['namespace' => 'Home'], function () {
 
     //登陆后才可以访问
     $this->group(['middleware' => 'auth'], function () {
-
+        //预约页面
+        $this->get('order/{id}', 'ManagerController@order');
     });
 });
 

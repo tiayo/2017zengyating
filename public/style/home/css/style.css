@@ -1,13 +1,4 @@
 /*主页*/
-.index {
-    overflow: scroll;
-    position: fixed;
-    top: 40px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #eee;
-}
 .index .index-search {
     position: fixed;
     top: 0;
@@ -23,6 +14,15 @@
     margin: 7px 3%;
     text-indent: 10px;
     line-height: 26px;
+}
+.index .index-content {
+    overflow: scroll;
+    position: fixed;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #eee;
 }
 .index .shop {
     margin-bottom: 15px;
@@ -133,6 +133,7 @@
     margin: 0 auto;
     width: 60px;
     height: 60px;
+    border: 1px solid #fff;
     border-radius: 50%;
 }
 .barber .banner h1 {
