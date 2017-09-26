@@ -1,0 +1,250 @@
+/*主页*/
+.index {
+    overflow: scroll;
+    position: fixed;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #eee;
+}
+.index .index-search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: #eee;
+}
+.index .index-search input {
+    float: left;
+    width: 94%;
+    height: 26px;
+    margin: 7px 3%;
+    text-indent: 10px;
+    line-height: 26px;
+}
+.index .shop {
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+.index .shop .shop-name {
+    height: 40px;
+    margin: 0 3%;
+    border-bottom: 1px dashed #000;
+}
+.index .shop .shop-name h1 {
+    float: left;
+    height: 100%;
+    font-size: 20px;
+    line-height: 40px;
+}
+.index .shop .shop-name .tel {
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background: pink url(../icon/tel.png) no-repeat center;
+    background-size: 20px 20px;
+    border-radius: 50%;
+}
+.index .shop .shop-info {
+    width: 94%;
+    height: 130px;
+    margin: 10px 3%;
+    background-color: #f5f5f5;
+    box-shadow: 0px 2px 4px #000;
+}
+.index .shop .shop-info-top {
+    position: relative;
+    height: 55px;
+    background-color: pink;
+}
+.index .shop .shop-info-top .portrait {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    z-index: 999;
+}
+.index .shop .shop-info-top h1 {
+    position: absolute;
+    top: 15px;
+    left: 80px;
+    font-size: 16px;
+}
+.index .shop .shop-info-top h2 {
+    position: absolute;
+    top: 35px;
+    left: 80px;
+}
+.index .shop .shop-info-bottom {
+    position: relative;
+    height: 45px;
+    background-color: #fff;
+    border-bottom: 1px dashed #000;
+}
+.index .shop .shop-info-bottom h1 {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+.index .shop .shop-info-bottom .subscribe {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    width: 50px;
+    height: 20px;
+    border: 1px solid pink;
+    text-align: center;
+    line-height: 20px;
+}
+.index .shop .shop-info-more {
+    float: left;
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+    text-indent: 10px;
+    line-height: 30px;
+}
+
+/*理发师主页*/
+.barber {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f5f5f5;
+}
+.barber .banner {
+    position: relative;
+    height: 100px;
+    background-color: pink;
+}
+.barber .banner .banner-pic {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.barber .banner h1 {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: center;
+}
+.barber .date {
+    height: 45px;
+    background-color: #fff;
+}
+.barber .date .date-list {
+    float: left;
+    width: 14.28%;
+    height: 100%;
+}
+.barber .date .date-list h1 {
+    height: 50%;
+    text-align: center;
+    line-height: 25px;
+}
+.barber .date .date-list h2 {
+    height: 50%;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+}
+.barber .date .date-active {
+    color: pink;
+    box-shadow: 0px 1px pink;
+}
+.barber .time {
+    overflow: scroll;
+    position: fixed;
+    top: 145px;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+}
+.barber .time .time-con .timeTitle {
+    height: 30px;
+    padding: 10px 0 0;
+}
+.barber .time .time-con .timeTitle span {
+    float: left;
+    width: 42%;
+    height: 1px;
+    margin-top: 15px;
+    background-color: #999;
+}
+.barber .time .time-con .timeTitle span:nth-last-child(1) {
+    float: right;
+    width: 42%;
+    height: 1px;
+    background-color: #999;
+}
+.barber .time .time-con .timeTitle em {
+    float: left;
+    width: 16%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+.barber .time .time-con .time-info {
+    padding: 10px;
+}
+.barber .time .time-con .time-info li {
+    float: left;
+    width: 15%;
+    height: 25px;
+    margin: 5px 2.5%;
+    background-color: #fff;
+    box-shadow: 1px -1px #999,
+               -1px 1px #999;
+    text-align: center;
+    line-height: 25px;
+}
+.barber .time .time-con .time-info .time-active {
+    color: pink;
+    box-shadow: 1px -1px pink,
+               -1px 1px pink;
+}
+.barber .confirm {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    background-color: #fff;
+}
+.barber .confirm .confirm-info {
+    float: left;
+    height: 100%;
+    padding-left: 20px;
+    line-height: 45px;
+}
+.barber .confirm .confirm-info span {
+    margin-right: 5px;
+}
+.barber .confirm .confirm-btn {
+    float: right;
+    width: 100px;
+    height: 100%;
+    background-color: pink;
+    color: #fff;
+    text-indent: 5px;
+    letter-spacing: 5px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 45px;
+}
