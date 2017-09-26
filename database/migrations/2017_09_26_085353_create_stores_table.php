@@ -19,6 +19,7 @@ class CreateStoresTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('description');
+            $table->string('avatar');
             $table->timestamps();
         });
     }

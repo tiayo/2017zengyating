@@ -2,6 +2,7 @@
 
 return [
     'administrator' => env('SITE_ADMINISTRATE'),
+    'upload_image_size' => 1024,
     'list_num' => env('SITE_LIST_NUM'),
     'manager_group' => [ //理发师分组
         0 => '学徒',

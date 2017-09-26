@@ -31,12 +31,18 @@
                 添加/管理门店
             </header>
             <div class="panel-body">
-                <form id="form" class="form-horizontal adminex-form" method="post" action="{{ $url }}">
+                <form id="form" class="form-horizontal adminex-form" enctype="multipart/form-data" method="post" action="{{ $url }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-sm-2 control-label">名称</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="name" name="name" value="{{ $old_input['name'] }}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar" class="col-sm-2 col-sm-2 control-label">头像</label>
+                        <div class="col-sm-3">
+                            <input type="file" id="avatar" name="avatar">
                         </div>
                     </div>
                     <div class="form-group">

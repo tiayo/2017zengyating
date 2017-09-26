@@ -78,6 +78,7 @@ class StoreController extends Controller
     {
         $this->validate($this->request, [
             'name' => 'required',
+            'avatar' => 'file|image',
             'address' => 'required',
             'phone' => 'required',
             'description' => 'required',

@@ -3,6 +3,7 @@
 namespace App\Services\Manage;
 
 use App\Repositories\StoreRepository;
+use App\Services\ImageService;
 use Exception;
 
 class StoreService
@@ -83,6 +84,7 @@ class StoreService
         $data['address'] = $post['address'];
         $data['phone'] = $post['phone'];
         $data['description'] = $post['description'];
+        $data['avatar'] = ImageService::upload($post['avatar']);
 
         //执行插入或更新
         return empty($id) ? $this->store->create($data) : $this->store->update($id, $data);

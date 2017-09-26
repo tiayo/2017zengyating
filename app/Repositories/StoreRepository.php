@@ -48,15 +48,8 @@ class StoreRepository
      */
     public function getSearch($num, $keyword)
     {
-        $array = $this->user
-                ->select('id')
-                ->where('name', 'like', "%$keyword%")
-                ->get()
-                ->toArray();
-
         return $this->store
-            ->where('manager_id', Auth::guard('manager')->id())
-            ->whereIn('user_id', $array)
+            ->where('name', 'like', "%$keyword%")
             ->orderBy('id', 'desc')
             ->paginate($num);
     }
