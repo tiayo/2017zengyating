@@ -44,8 +44,6 @@ $this->group(['namespace' => 'Manage', 'prefix' => 'manage'], function () {
             //预约相关（管理员）
             $this->get('/order/list/', 'OrderController@listView')->name('order_list');
             $this->get('/order/list/{keyword}', 'OrderController@listView')->name('order_search');
-            $this->get('/order/add', 'OrderController@addView')->name('order_add');
-            $this->post('/order/add', 'OrderController@post');
             $this->get('/order/update/{id}', 'OrderController@updateView')->name('order_update');
             $this->post('/order/update/{id}', 'OrderController@post');
             $this->get('/order/destroy/{id}', 'OrderController@destroy')->name('order_destroy');

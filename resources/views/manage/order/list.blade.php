@@ -22,13 +22,10 @@
 		<section class="panel">
             <div class="panel-body">
                 <form class="form-inline" id="search_form">
-                    @if ($sign == 'admin')
-                    <button type="button" class="btn btn-success" onclick="location='{{ route('order_add') }}'">添加预约</button>
-                    @endif
                     <div class="form-group">
                         <label class="sr-only" for="search"></label>
                         <input type="text" class="form-control" id="search" name="keyword"
-                               value="{{ Request::get('keyword') }}" placeholder="输入用户名" required>
+                               value="{{ Request::get('keyword') }}" placeholder="输入用户姓名" required>
                     </div>
                     <button type="submit" class="btn btn-primary" id="salesman_search">搜索</button>
                 </form>

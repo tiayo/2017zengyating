@@ -79,7 +79,7 @@ class CommodityController extends Controller
         $this->validate($this->request, [
             'name' => 'required',
             'price' => 'required|numeric',
-            'score' => 'required|max:2',
+            'score' => 'required',
             'description' => 'required',
         ]);
 

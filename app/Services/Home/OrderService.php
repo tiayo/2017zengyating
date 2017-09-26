@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Manage;
+namespace App\Services\Home;
 
 use App\Repositories\OrderRepository;
 use Carbon\Carbon;
@@ -101,12 +101,13 @@ class OrderService
      * @param null $id
      * @return mixed
      */
-    public function updateOrCreate($post, $id)
+    public function updateOrCreate($post, $id = null)
     {
         //判断时间段是否可以预约
         $this->canOrder($post, $id);
 
         //统计数据
+        $data['user_id'] = Auth::guard('web')->id();
         $data['commodity'] = serialize($post['commodity']);
         $data['manager_id'] = $post['manager_id'];
         $data['order_time'] = $post['order_time'];
@@ -117,7 +118,7 @@ class OrderService
         $data['price'] = $value['price'];
 
         //执行插入或更新
-        return $this->order->update($id, $data);
+        return empty($id) ? $this->order->create($data) : $this->order->update($id, $data);
     }
 
     /**

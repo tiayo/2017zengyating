@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Manage;
+namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Services\Manage\CommodityService;
@@ -76,6 +76,28 @@ class OrderController extends Controller
        if ($this->order->changeStatus($order_id, $status)) {
            return redirect()->back();
        }
+    }
+
+    /**
+     * 添加管理员视图
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addView()
+    {
+        //获取可预约的理发师
+        $managers = $this->manager->getAvailable('id', 'name');
+
+        //获取商品
+        $commodities = $this->commodity->getSimple('id', 'name');
+
+        return view('manage.order.add_or_update', [
+            'managers' => $managers,
+            'commodities' => $commodities,
+            'old_input' => $this->request->session()->get('_old_input'),
+            'url' => Route('order_add'),
+            'sign' => 'add',
+        ]);
     }
 
     /**

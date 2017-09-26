@@ -87,7 +87,11 @@
 
             //商品选中
             @if (!empty($old_input['commodity']))
-                @foreach(unserialize($old_input['commodity']) as $commodity)
+                    @php
+                        $old_commodities = is_array($old_input['commodity']) ?
+                            $old_input['commodity'] : unserialize($old_input['commodity'])
+                    @endphp
+                @foreach($old_commodities as $commodity)
                     $("#commodity_{{ $commodity }}").attr('checked', 'checked');
                 @endforeach
             @endif
