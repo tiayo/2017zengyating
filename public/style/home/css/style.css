@@ -249,3 +249,201 @@
     text-align: center;
     line-height: 45px;
 }
+.barber .barber-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+.barber .barber-mask .mask-con {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 70%;
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 0px 1px 5px #000;
+}
+.barber .barber-mask h1 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    box-shadow: 0px 1px #999;
+    text-indent: 10px;
+    line-height: 40px;
+    z-index: 999;
+}
+.barber .barber-mask .projects {
+    overflow: scroll;
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+}
+.barber .barber-mask .projects li {
+    float: left;
+    height: 25px;
+    padding: 0 5px;
+    margin: 10px 3%;
+    background-color: #fff;
+    box-shadow: 1px -1px #999,
+               -1px 1px #999;
+    text-align: center;
+    line-height: 25px;
+}
+.barber .barber-mask .projects .projects-active {
+    color: pink;
+    box-shadow: 1px -1px pink,
+               -1px 1px pink;
+}
+.barber .barber-mask .mask-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+}
+.barber .barber-mask .mask-bottom .cancel {
+    float: left;
+    width: 50%;
+    height: 100%;
+    box-shadow: 0px 1px #eee inset;
+    text-align: center;
+    line-height: 40px;
+}
+.barber .barber-mask .mask-bottom .mask-confirm {
+    float: right;
+    width: 50%;
+    height: 100%;
+    background-color: pink;
+    text-align: center;
+    line-height: 40px;
+}
+
+/*门店主页*/
+.store .bigpic {
+    width: 100%;
+}
+.store .bigpic img {
+    float: left;
+    width: 100%;
+}
+.store .store-content {
+    overflow: scroll;
+    position: fixed;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #eee;
+}
+.store .barberList {
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+.store .barberList .barberList-name {
+    height: 40px;
+    margin: 0 3%;
+    border-bottom: 1px dashed #000;
+}
+.store .barberList .barberList-name h1 {
+    float: left;
+    height: 100%;
+    font-size: 20px;
+    line-height: 40px;
+}
+.store .barberList .barberList-name .tel {
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background: pink url(../icon/tel.png) no-repeat center;
+    background-size: 20px 20px;
+    border-radius: 50%;
+}
+.store .barberList .barberList-info {
+    width: 94%;
+    height: 130px;
+    margin: 10px 3%;
+    background-color: #f5f5f5;
+    box-shadow: 0px 2px 4px #000;
+}
+.store .barberList .barberList-info-top {
+    position: relative;
+    height: 55px;
+    background-color: pink;
+}
+.store .barberList .barberList-info-top .portrait {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    z-index: 999;
+}
+.store .barberList .barberList-info-top h1 {
+    position: absolute;
+    top: 15px;
+    left: 80px;
+    font-size: 16px;
+}
+.store .barberList .barberList-info-top h2 {
+    position: absolute;
+    top: 35px;
+    left: 80px;
+}
+.store .barberList .barberList-info-bottom {
+    position: relative;
+    height: 45px;
+    background-color: #fff;
+    border-bottom: 1px dashed #000;
+}
+.store .barberList .barberList-info-bottom h1 {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+.store .barberList .barberList-info-bottom .subscribe {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    width: 50px;
+    height: 20px;
+    border: 1px solid pink;
+    text-align: center;
+    line-height: 20px;
+}
+.store .barberList .barberList-info-more {
+    float: left;
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+    text-indent: 10px;
+    line-height: 30px;
+}
+.store .barberAll {
+    width: 90%;
+}
+.store .barberAll a {
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+.store .barberAll a img {
+    float: left;
+    width: 100%;
+    border-radius: 50%;
+}

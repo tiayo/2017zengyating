@@ -3,6 +3,7 @@
 namespace App\Services\Home;
 
 use App\Repositories\OrderRepository;
+use App\Services\Manage\CommodityService;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -10,10 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class OrderService
 {
     protected $order;
+    protected $commodity;
 
-    public function __construct(OrderRepository $order)
+    public function __construct(OrderRepository $order,CommodityService $commodity)
     {
         $this->order = $order;
+        $this->commodity = $commodity;
     }
 
     /**
@@ -172,10 +175,5 @@ class OrderService
 
         //执行删除
         return $this->order->destroy($id);
-    }
-
-    public function countGroup($group_id)
-    {
-        return $this->order->countGroup($group_id);
     }
 }
