@@ -12,6 +12,7 @@ $this->group(['namespace' => 'Home'], function () {
     //门店相关
     $this->get('/', 'StoreController@listView')->name('home.index');
     $this->get('/store/list/{keyword}', 'StoreController@listView')->name('home_store_search');
+    $this->get('/store/view/{store_id}', 'StoreController@view')->name('home_store_view');
 
     //登陆后才可以访问
     $this->group(['middleware' => 'home_auth'], function () {

@@ -51,6 +51,17 @@ class ManagerService
     }
 
     /**
+     * 根据店铺获取理发师
+     *
+     * @param $store_id
+     * @return mixed
+     */
+    public function getByStore($store_id)
+    {
+        return $this->manager->getByStore($store_id);
+    }
+
+    /**
      * 获取需要的数据
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator

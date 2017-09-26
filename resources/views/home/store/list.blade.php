@@ -30,9 +30,9 @@
                     </div>
                     <div class="shop-info-bottom">
                         <h1>{{ $store['description'] }}</h1>
-                        <a href="###" class="subscribe">预约</a>
+                        <a href="{{ route('home_store_view', ['store_id' => $store['id']]) }}" class="subscribe">预约</a>
                     </div>
-                    <a href="###" class="shop-info-more">查看更多</a>
+                    <a href="{{ route('home_store_view', ['store_id' => $store['id']]) }}" class="shop-info-more">查看更多</a>
                 </div>
             </div>
         @endforeach

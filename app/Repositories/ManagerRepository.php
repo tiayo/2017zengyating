@@ -7,10 +7,12 @@ use App\Manager;
 class ManagerRepository
 {
     protected $manager;
+    protected $num;
 
     public function __construct(Manager $manager)
     {
         $this->manager = $manager;
+        $this->num = config('site.list_num');
     }
 
     public function create($data)
@@ -64,6 +66,21 @@ class ManagerRepository
             })
             ->orderBy('id', 'desc')
             ->paginate($num);
+    }
+
+    /**
+     * 根据店铺获取理发师
+     *
+     * @param $strore_id
+     * @return mixed
+     */
+    public function getByStore($strore_id)
+    {
+        return $this->manager
+            ->orderBy('id', 'desc')
+            ->where('store_id', $strore_id)
+            ->where('status', 1)
+            ->paginate($this->num);
     }
     
     public function first($id)
