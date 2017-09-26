@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/style/home/css/reset.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('/style/home/css/style.css') }}"/>
     <script src="{{ asset('/style/home/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/static/adminex/js/bootstrap.min.js') }}"></script>
 </head>
 <body>
 <div class="barber">
