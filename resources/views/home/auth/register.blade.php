@@ -11,7 +11,7 @@
 <body>
 <div class="registration">
     <div id="logo">
-        <img src="../icon/logo.png"/>
+        <img src="{{ asset('/style/home/images/logo.png') }}"/>
     </div>
     <div class="title">
         用户注册

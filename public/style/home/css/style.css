@@ -444,7 +444,8 @@
     right: 0;
 }
 .login #logo img {
-    width: 100%;
+    width: 50%;
+    margin: 5% 25% 0 25%;
 }
 .login .title {
     width: 100%;
@@ -517,7 +518,8 @@
 
 /*注册页面*/
 .registration #logo img {
-    width: 100%;
+    width: 50%;
+    margin: 5% 25% 0 25%;
 }
 .registration .title {
     width: 100%;
