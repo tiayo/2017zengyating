@@ -17,6 +17,7 @@ class CreateManagersTable extends Migration
             $table->increments('id');
             $table->integer('store_id');
             $table->string('name');
+            $table->string('avatar')->default('/style/home/icon/portrait.jpg');
             $table->string('email')->unique();
             $table->string('introduce');
             $table->integer('type')->default(0); //类型

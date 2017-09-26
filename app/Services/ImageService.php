@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class ImageService
+trait ImageService
 {
     /**
      * 保存上传的图片
@@ -11,7 +11,7 @@ class ImageService
      * @return bool
      * @throws \Exception
      */
-    public static function upload($file)
+    public static function uploadImage($file)
     {
         if (!is_file($file)) {
             return $file;

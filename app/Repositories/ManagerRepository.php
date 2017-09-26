@@ -85,13 +85,6 @@ class ManagerRepository
             ->delete();
     }
 
-    public function countGroup($group_id)
-    {
-        return $this->manager
-            ->where('group', $group_id)
-            ->count();
-    }
-
     public function selectFirst($where, ...$select)
     {
         return $this->manager
@@ -105,5 +98,12 @@ class ManagerRepository
         return $this->manager
             ->where('id', $id)
             ->update($data);
+    }
+
+    public function count($where)
+    {
+        return $this->manager
+            ->where($where)
+            ->count();
     }
 }

@@ -55,6 +55,17 @@ class OrderService
     }
 
     /**
+     * 统计完成状态订单的金额总和
+     *
+     * @return mixed
+     */
+    public function sumPrice()
+    {
+        return $this->order->sumPrice();
+
+    }
+
+    /**
      * 获取需要的数据(理发师级别)
      *
      * @return mixed
@@ -175,8 +186,13 @@ class OrderService
         return $this->order->destroy($id);
     }
 
-    public function countGroup($group_id)
-    {
-        return $this->order->countGroup($group_id);
+    /**
+     * 按需求统计
+     *
+     * @param $where
+     * @return mixed
+     */
+    public function count($where){
+        return $this->order->count($where);
     }
 }

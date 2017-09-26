@@ -83,4 +83,11 @@ class UserRepository
             ->where('id', $id)
             ->update($data);
     }
+
+    public function count($where)
+    {
+        return $this->user
+            ->where($where)
+            ->count();
+    }
 }

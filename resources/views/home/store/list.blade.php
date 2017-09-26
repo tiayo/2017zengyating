@@ -12,7 +12,7 @@
 <div class="index">
     <div class="index-search">
         <form id="search_form">
-            <input type="text" id="search" placeholder="搜索门店"/>
+            <input type="text" id="search" value="{{ Request::route('keyword') }}" placeholder="搜索门店"/>
         </form>
     </div>
     <div class="index-content">

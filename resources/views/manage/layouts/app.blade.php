@@ -58,17 +58,14 @@
             <a class="toggle-btn"><i class="fa fa-bars"></i></a>
             <!--toggle button end-->
             <!--search start-->
-            <form class="searchform" id="searchform_id">
-                <input type="text" class="form-control" name="keyword" value="" placeholder="Search here..." />
-            </form>
+            {{--<form class="searchform" id="searchform_id">--}}
+                {{--<input type="text" class="form-control" name="keyword" value="" placeholder="Search here..." />--}}
+            {{--</form>--}}
             <!--search end-->
             <div class="menu-right">
                 <ul class="notification-menu">
                     <li>
-                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            当前知识量：
-                            <span class="badge"></span>
-                        </a>
+
                     </li>
                     <li>
                         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

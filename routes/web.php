@@ -14,9 +14,9 @@ $this->group(['namespace' => 'Home'], function () {
     $this->get('/store/list/{keyword}', 'StoreController@listView')->name('home_store_search');
 
     //登陆后才可以访问
-    $this->group(['middleware' => 'auth'], function () {
+    $this->group(['middleware' => 'home_auth'], function () {
         //预约页面
-        $this->get('order/{id}', 'ManagerController@order');
+        $this->get('order/{id}', 'ManagerController@order')->name('home_order');
     });
 });
 

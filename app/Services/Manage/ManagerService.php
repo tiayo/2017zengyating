@@ -3,10 +3,13 @@
 namespace App\Services\Manage;
 
 use App\Repositories\ManagerRepository;
+use App\Services\ImageService;
 use Exception;
 
 class ManagerService
 {
+    use ImageService;
+
     protected $manager;
 
     public function __construct(ManagerRepository $manager)
@@ -98,6 +101,11 @@ class ManagerService
             $data['password'] = bcrypt('abcd8888');
         }
 
+        //有上传图片时处理
+        if (isset($data['avatar'])) {
+            $data['avatar'] = $this->uploadImage($post['avatar']);
+        }
+
         //执行插入或更新
         return empty($id) ? $this->manager->create($data) : $this->manager->update($id, $data);
     }
@@ -117,8 +125,13 @@ class ManagerService
         return $this->manager->destroy($id);
     }
 
-    public function countGroup($group_id)
-    {
-        return $this->manager->countGroup($group_id);
+    /**
+     * 按需求统计
+     *
+     * @param $where
+     * @return mixed
+     */
+    public function count($where){
+        return $this->manager->count($where);
     }
 }

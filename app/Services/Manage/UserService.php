@@ -71,8 +71,13 @@ class UserService
         return $this->user->destroy($id);
     }
 
-    public function countGroup($group_id)
-    {
-        return $this->user->countGroup($group_id);
+    /**
+     * 按需求统计
+     *
+     * @param $where
+     * @return mixed
+     */
+    public function count($where){
+        return $this->user->count($where);
     }
 }

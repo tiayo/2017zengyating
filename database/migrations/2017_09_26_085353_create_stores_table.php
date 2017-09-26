@@ -19,7 +19,7 @@ class CreateStoresTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('description');
-            $table->string('avatar');
+            $table->string('avatar')->default('/style/home/icon/portrait.jpg');
             $table->timestamps();
         });
     }

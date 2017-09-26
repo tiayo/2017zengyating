@@ -31,7 +31,7 @@
                 添加/管理理发师
             </header>
             <div class="panel-body">
-                <form id="form" class="form-horizontal adminex-form" method="post" action="{{ $url }}">
+                <form id="form" class="form-horizontal adminex-form" enctype="multipart/form-data" method="post" action="{{ $url }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="store_id" class="col-sm-2 col-sm-2 control-label">所属门店</label>
@@ -56,6 +56,12 @@
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="name" name="name" value="{{ $old_input['name'] }}"
                                    @if($sign == 'update') readonly @elseif($sign == 'add') required @endif>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar" class="col-sm-2 col-sm-2 control-label">头像</label>
+                        <div class="col-sm-3">
+                            <input type="file" id="avatar" name="avatar">
                         </div>
                     </div>
                     <div class="form-group">

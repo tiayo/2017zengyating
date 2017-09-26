@@ -10,12 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class OrderService
 {
     protected $order;
-    protected $commodity;
 
-    public function __construct(OrderRepository $order, CommodityService $commodity)
+    public function __construct(OrderRepository $order)
     {
         $this->order = $order;
-        $this->commodity = $commodity;
     }
 
     /**

@@ -96,6 +96,18 @@ class OrderRepository
             ->orderBy('id', 'desc')
             ->paginate($num);
     }
+
+    /**
+     * 统计完成状态订单的金额总和
+     *
+     * @return mixed
+     */
+    public function sumPrice()
+    {
+        return $this->order
+            ->where('status', '4')
+            ->sum('price');
+    }
     
     public function first($id)
     {

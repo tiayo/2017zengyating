@@ -89,6 +89,7 @@ class ManagerController extends Controller
         $this->validate($this->request, [
             'email' => 'required|email',
             'name' => 'required',
+            'avatar' => 'file|image',
             'store_id' => 'required|integer',
             'phone' => 'required|numeric',
             'type' => 'required|max:2',

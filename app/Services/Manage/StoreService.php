@@ -8,6 +8,8 @@ use Exception;
 
 class StoreService
 {
+    use ImageService;
+
     protected $store;
 
     public function __construct(StoreRepository $store)
@@ -84,7 +86,12 @@ class StoreService
         $data['address'] = $post['address'];
         $data['phone'] = $post['phone'];
         $data['description'] = $post['description'];
-        $data['avatar'] = ImageService::upload($post['avatar']);
+
+        //有上传图片时处理
+        if (isset($post['avatar'])) {
+            $data['avatar'] = $this->uploadImage($post['avatar']);
+        }
+
 
         //执行插入或更新
         return empty($id) ? $this->store->create($data) : $this->store->update($id, $data);
@@ -103,5 +110,15 @@ class StoreService
 
         //执行删除
         return $this->store->destroy($id);
+    }
+
+    /**
+     * 按需求统计
+     *
+     * @param $where
+     * @return mixed
+     */
+    public function count($where){
+        return $this->store->count($where);
     }
 }

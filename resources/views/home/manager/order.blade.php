@@ -3,46 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-    <title>预约</title>
-    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-    <script src="../js/jquery.min.js"></script>
+    <title>预约{{ $manager['name'] }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/style/home/css/reset.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/style/home/css/style.css') }}"/>
+    <script src="{{ asset('/style/home/js/jquery.min.js') }}"></script>
 </head>
 <body>
 <div class="barber">
     <div class="banner">
-        <img src="../icon/portrait.jpg" class="banner-pic" />
-        <h1>郑祥景</h1>
+        <img src="{{ $manager['avatar'] }}" class="banner-pic" />
+        <h1>{{ $manager['name'] }}</h1>
     </div>
     <div class="date">
-        <div class="date-list date-active">
-            <h1>10/6</h1>
-            <h2>周一</h2>
-        </div>
-        <div class="date-list">
-            <h1>10/7</h1>
-            <h2>周二</h2>
-        </div>
-        <div class="date-list">
-            <h1>10/8</h1>
-            <h2>周三</h2>
-        </div>
-        <div class="date-list">
-            <h1>10/9</h1>
-            <h2>周四</h2>
-        </div>
-        <div class="date-list">
-            <h1>10/10</h1>
-            <h2>周五</h2>
-        </div>
-        <div class="date-list">
-            <h1>10/11</h1>
-            <h2>周六</h2>
-        </div>
-        <div class="date-list">
-            <h1>10/12</h1>
-            <h2>周日</h2>
-        </div>
+        @for($i=0; $i<7; $i++)
+            <div class="date-list @if($i == 0) date-active @endif">
+                <h1>{{ \Carbon\Carbon::parse(now()->addDay($i))->format('m-d') }}</h1>
+                <h2>{{ config('site.week')[\Carbon\Carbon::now()->addDay($i)->dayOfWeek]}}</h2>
+            </div>
+        @endfor
     </div>
     <div class="time">
         <div class="time-con">
@@ -96,6 +74,9 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    
+
     $(".date-list").on("click", function() {
         $(".date-list").removeClass('date-active');
         $(this).addClass('date-active');
