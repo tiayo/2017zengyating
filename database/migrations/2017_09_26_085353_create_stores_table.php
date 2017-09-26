@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateManagersTable extends Migration
+class CreateStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateManagersTable extends Migration
      */
     public function up()
     {
-        Schema::create('managers', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('store_id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('introduce');
-            $table->integer('type')->default(0); //类型
+            $table->string('address');
             $table->string('phone');
-            $table->string('password');
-            $table->integer('status')->default(1); //是否可预约：0不可预约，1为可预约
-            $table->rememberToken();
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -35,6 +30,6 @@ class CreateManagersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('managers');
+        Schema::dropIfExists('stores');
     }
 }

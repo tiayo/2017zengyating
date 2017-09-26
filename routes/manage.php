@@ -49,6 +49,15 @@ $this->group(['namespace' => 'Manage', 'prefix' => 'manage'], function () {
             $this->get('/order/update/{id}', 'OrderController@updateView')->name('order_update');
             $this->post('/order/update/{id}', 'OrderController@post');
             $this->get('/order/destroy/{id}', 'OrderController@destroy')->name('order_destroy');
+
+            //门店管理相关
+            $this->get('/store/list/', 'StoreController@listView')->name('store_list');
+            $this->get('/store/list/{keyword}', 'StoreController@listView')->name('store_search');
+            $this->get('/store/add', 'StoreController@addView')->name('store_add');
+            $this->post('/store/add', 'StoreController@post');
+            $this->get('/store/update/{id}', 'StoreController@updateView')->name('store_update');
+            $this->post('/store/update/{id}', 'StoreController@post');
+            $this->get('/store/destroy/{id}', 'StoreController@destroy')->name('store_destroy');
         });
     });
 });

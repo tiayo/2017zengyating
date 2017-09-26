@@ -33,6 +33,7 @@
 		                <tr>
 		                    <th>ID</th>
 		                    <th>姓名</th>
+		                    <th>门店</th>
 		                    <th>电话</th>
 		                    <th>邮箱</th>
                             <th>级别</th>
@@ -47,6 +48,7 @@
                         @foreach($lists as $list)
                         <tr>
                             <td>{{ $list['id'] }}</td>
+                            <td>{{ $list->store->name }}</td>
                             <td>{{ $list['name'] }}</td>
                             <td>{{ $list['phone'] }}</td>
                             <td>{{ $list['email'] }}</td>

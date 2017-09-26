@@ -26,4 +26,9 @@ class Manager extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function store()
+    {
+        return $this->belongsTo('App\Store');
+    }
 }

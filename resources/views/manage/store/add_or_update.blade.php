@@ -1,18 +1,14 @@
 @extends('manage.layouts.app')
 
-@section('title', '添加/管理服务项目')
+@section('title', '添加/管理门店')
 
 @section('style')
     @parent
-    {{--编辑器--}}
-    <script type="text/javascript" charset="gbk" src="{{ asset('/ueditor/ueditor.config.js') }}"></script>
-    <script type="text/javascript" charset="gbk" src="{{ asset('/ueditor/ueditor.all.min.js') }}"> </script>
-    <script type="text/javascript" charset="gbk" src="{{ asset('/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
 @endsection
 
 @section('breadcrumb')
     <li navValue="nav_0"><a href="#">管理专区</a></li>
-    <li navValue="nav_0_3"><a href="#">添加/管理服务项目</a></li>
+    <li navValue="nav_0_5"><a href="#">添加/管理门店</a></li>
 @endsection
 
 @section('body')
@@ -32,7 +28,7 @@
 
         <section class="panel">
             <header class="panel-heading">
-                添加/管理服务项目
+                添加/管理门店
             </header>
             <div class="panel-body">
                 <form id="form" class="form-horizontal adminex-form" method="post" action="{{ $url }}">
@@ -44,23 +40,21 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-sm-2 col-sm-2 control-label">价格</label>
+                        <label for="address" class="col-sm-2 col-sm-2 control-label">地址</label>
                         <div class="col-sm-3">
-                            <input type="number" class="form-control" id="price" name="price" value="{{ $old_input['price'] }}" required>
+                            <input type="text" class="form-control" id="address" name="address" value="{{ $old_input['address'] }}" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="score" class="col-sm-2 col-sm-2 control-label">积分</label>
+                        <label for="phone" class="col-sm-2 col-sm-2 control-label">电话</label>
                         <div class="col-sm-3">
-                            <input type="number" class="form-control" id="score" name="score" value="{{ $old_input['score'] }}" required>
+                            <input type="text" class="form-control" id="phone" name="phone" value="{{ $old_input['phone'] }}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-sm-2 col-sm-2 control-label">介绍</label>
-                        <div class="col-sm-10">
-                            <script id="editor" type="text/plain" name="description">
-                                {!! $old_input['description'] or '' !!}
-                            </script>
+                        <div class="col-sm-3">
+                            <textarea class="form-control" id="description" name="description" required>{{ $old_input['description'] }}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -81,10 +75,7 @@
         $(document).ready(function () {
             $('#password').bind('input propertychange', function() {
                 $(this).attr('name', 'password')
-            });
-
-            //开启编辑器
-            UE.getEditor('editor')
+            })
         })
     </script>
 @endsection

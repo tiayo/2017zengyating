@@ -2,16 +2,16 @@
 
 namespace App\Services\Manage;
 
-use App\Repositories\ManagerRepository;
+use App\Repositories\StoreRepository;
 use Exception;
 
-class ManagerService
+class StoreService
 {
-    protected $manager;
+    protected $store;
 
-    public function __construct(ManagerRepository $manager)
+    public function __construct(StoreRepository $store)
     {
-        $this->manager = $manager;
+        $this->store = $store;
     }
 
     /**
@@ -24,7 +24,7 @@ class ManagerService
      */
     public function validata($id)
     {
-        $salesman = $this->manager->first($id);
+        $salesman = $this->store->first($id);
 
         throw_if(empty($salesman), Exception::class, '未找到该记录！', 404);
 
@@ -41,20 +41,21 @@ class ManagerService
     public function get($num = 10000, $keyword = null)
     {
         if (!empty($keyword)) {
-            return $this->manager->getSearch($num, $keyword);
+            return $this->store->getSearch($num, $keyword);
         }
 
-        return $this->manager->get($num);
+        return $this->store->get($num);
     }
 
     /**
      * 获取需要的数据
      *
+     * @param array ...$select
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getAvailable(...$select)
+    public function getSimple(...$select)
     {
-        return $this->manager->getAvailable(...$select);
+        return $this->store->getSimple(...$select);
     }
 
     /**
@@ -77,29 +78,14 @@ class ManagerService
      */
     public function updateOrCreate($post, $id = null)
     {
-        //创建操作时
-        if (empty($id)) {
-            $data['name'] = $post['name'];
-            $data['email'] = $post['email'];
-        }
-
-        //统计数据
+        //构造数组
+        $data['name'] = $post['name'];
+        $data['address'] = $post['address'];
         $data['phone'] = $post['phone'];
-        $data['store_id'] = $post['store_id'];
-        $data['type'] = $post['type'];
-        $data['introduce'] = $post['introduce'];
-        $data['status'] = $post['status'];
-
-        //密码
-        if (isset($post['password'])) {
-            $data['password'] = bcrypt($post['password']);
-        } else if(empty($id) && $id !== 0) {
-            //默认密码
-            $data['password'] = bcrypt('abcd8888');
-        }
+        $data['description'] = $post['description'];
 
         //执行插入或更新
-        return empty($id) ? $this->manager->create($data) : $this->manager->update($id, $data);
+        return empty($id) ? $this->store->create($data) : $this->store->update($id, $data);
     }
 
     /**
@@ -114,11 +100,6 @@ class ManagerService
         $this->validata($id)->toArray();
 
         //执行删除
-        return $this->manager->destroy($id);
-    }
-
-    public function countGroup($group_id)
-    {
-        return $this->manager->countGroup($group_id);
+        return $this->store->destroy($id);
     }
 }

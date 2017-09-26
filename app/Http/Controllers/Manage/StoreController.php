@@ -7,17 +7,15 @@ use App\Services\Manage\ManagerService;
 use App\Services\Manage\StoreService;
 use Illuminate\Http\Request;
 
-class ManagerController extends Controller
+class StoreController extends Controller
 {
-    protected $manager;
-    protected $request;
     protected $store;
+    protected $request;
 
-    public function __construct(ManagerService $manager, Request $request, StoreService $store)
+    public function __construct(StoreService $store, Request $request)
     {
-        $this->manager = $manager;
-        $this->request = $request;
         $this->store = $store;
+        $this->request = $request;
     }
 
     /**
@@ -29,10 +27,10 @@ class ManagerController extends Controller
     {
         $num = config('site.list_num');
 
-        $managers = $this->manager->get($num, $keyword);
+        $stores = $this->store->get($num, $keyword);
 
-        return view('manage.manager.list', [
-            'lists' => $managers,
+        return view('manage.store.list', [
+            'lists' => $stores,
         ]);
     }
 
@@ -43,13 +41,9 @@ class ManagerController extends Controller
      */
     public function addView()
     {
-        //获取门店数据
-        $stores = $this->store->getSimple('id', 'name');
-
-        return view('manage.manager.add_or_update', [
+        return view('manage.store.add_or_update', [
             'old_input' => $this->request->session()->get('_old_input'),
-            'stores' => $stores,
-            'url' => Route('manager_add'),
+            'url' => Route('store_add'),
             'sign' => 'add',
         ]);
     }
@@ -61,20 +55,16 @@ class ManagerController extends Controller
      */
     public function updateView($id)
     {
-        //获取门店数据
-        $stores = $this->store->getSimple('id', 'name');
-
         try {
             $old_input = $this->request->session()->has('_old_input') ?
-                session('_old_input') : $this->manager->first($id);
+                session('_old_input') : $this->store->first($id);
         } catch (\Exception $e) {
             return response($e->getMessage(), $e->getCode());
         }
 
-        return view('manage.manager.add_or_update', [
+        return view('manage.store.add_or_update', [
             'old_input' => $old_input,
-            'stores' => $stores,
-            'url' => Route('manager_update', ['id' => $id]),
+            'url' => Route('store_update', ['id' => $id]),
             'sign' => 'update',
         ]);
     }
@@ -87,28 +77,19 @@ class ManagerController extends Controller
     public function post($id = null)
     {
         $this->validate($this->request, [
-            'email' => 'required|email',
             'name' => 'required',
-            'store_id' => 'required|integer',
-            'phone' => 'required|numeric',
-            'type' => 'required|max:2',
-            'introduce' => 'required',
-            'status' => 'required|integer|min:0|max:1',
-            'password' => 'min:6',
+            'address' => 'required',
+            'phone' => 'required',
+            'description' => 'required',
         ]);
 
-        //创建动作时验证邮箱是否已经存在
-        empty($id) ? $this->validate($this->request, [
-            'email' => 'unique:managers'
-        ]) : true;
-
         try {
-            $this->manager->updateOrCreate($this->request->all(), $id);
+            $this->store->updateOrCreate($this->request->all(), $id);
         } catch (\Exception $e) {
             return response($e->getMessage());
         }
 
-        return redirect()->route('manager_list');
+        return redirect()->route('store_list');
     }
 
     /**
@@ -120,11 +101,11 @@ class ManagerController extends Controller
     public function destroy($id)
     {
         try {
-            $this->manager->destroy($id);
+            $this->store->destroy($id);
         } catch (\Exception $e) {
             return response($e->getMessage(), 500);
         }
 
-        return redirect()->route('manager_list');
+        return redirect()->route('store_list');
     }
 }

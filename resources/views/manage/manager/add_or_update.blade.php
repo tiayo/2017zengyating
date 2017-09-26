@@ -34,6 +34,16 @@
                 <form id="form" class="form-horizontal adminex-form" method="post" action="{{ $url }}">
                     {{ csrf_field() }}
                     <div class="form-group">
+                        <label for="store_id" class="col-sm-2 col-sm-2 control-label">所属门店</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="store_id" name="store_id">
+                                @foreach($stores as $store)
+                                    <option value="{{ $store['id'] }}">{{ $store['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="email" class="col-sm-2 col-sm-2 control-label">登录账号</label>
                         <div class="col-sm-3">
                             <input type="email" class="form-control" id="email" placeholder="填写邮箱"
