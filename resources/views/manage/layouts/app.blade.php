@@ -35,7 +35,7 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <img style="width:200px" src="http://www.startce.com/skin/zd/images/logo_2.png" alt="">
+            <img style="width:200px" src="{{ asset('/style/home/images/logo_2.png') }}" alt="">
             <a href="/"></a>
         </div>
 
