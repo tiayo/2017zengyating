@@ -9,7 +9,7 @@
 @endsection
 
 @section('breadcrumb')
-
+    <li navValue="nav_3"><a href="#">主页</a></li>
 @endsection
 
 @section('body')
