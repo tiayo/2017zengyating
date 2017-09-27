@@ -57,7 +57,7 @@ class ManagerController extends Controller
     {
         $this->order->changeStatus($order_id, 5);
 
-        return redirect()->route('home.index');
+        return redirect()->route('home_user');
     }
 
     /**
@@ -89,6 +89,6 @@ class ManagerController extends Controller
             return redirect()->back()->withErrors($e->getMessage());
         }
 
-        return redirect()->route('home.index');
+        return redirect()->route('home_user');
     }
 }

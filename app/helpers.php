@@ -16,11 +16,9 @@ if (!function_exists('can')) {
     {
         $user = Auth::guard($guard)->user();
 
-        $class = $class ?? $user;
+        if (empty($user)) return false;
 
-        if (empty($user)) {
-            return false;
-        }
+        $class = $class ?? $user;
 
         return $user->can($option, $class);
     }

@@ -32,16 +32,12 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function listView($keyword = null)
+    public function listView()
     {
-        $num = config('site.list_num');
+        $orders = $this->order->userGet();
 
-        $orders = $this->order->get($num, $keyword);
-
-        return view('manage.order.list', [
+        return view('home.order.list', [
             'lists' => $orders,
-            'search_url' => route('order_search', ['keyword' => '']),
-            'sign' => 'admin',
         ]);
     }
 

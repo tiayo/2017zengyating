@@ -55,6 +55,21 @@ class OrderRepository
     }
 
     /**
+     * 获取所有显示记录（用户级别）
+     *
+     * @param $page
+     * @param $num
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function userGet()
+    {
+        return $this->order
+            ->where('user_id', Auth::guard()->id())
+            ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    /**
      * 获取显示的搜索结果（管理员级）
      *
      * @param $num

@@ -62,7 +62,6 @@ class OrderService
     public function sumPrice()
     {
         return $this->order->sumPrice();
-
     }
 
     /**
@@ -77,6 +76,17 @@ class OrderService
         }
 
         return $this->order->managerGet($num);
+    }
+
+    /**
+     * 获取需要的数据(用户级别)
+     *
+     * @param $num
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function userGet()
+    {
+        return $this->order->userGet();
     }
 
     /**

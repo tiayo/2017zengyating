@@ -19,7 +19,7 @@
 
 <div class="nav-right">
     <a href="/">回到首页</a>
-    <a href="cn/personal-center.html">个人中心</a>
+    <a href="{{ route('home_user') }}">个人中心</a>
 </div>
 
 <script>

@@ -599,3 +599,170 @@
     text-align: center;
     line-height: 45px;
 }
+
+/*个人中心*/
+.pc .info {
+    position: relative;
+    width: 100%;
+    height: 115px;
+    margin-bottom: 10px;
+    background: pink;
+    color: #fff;
+}
+.pc .portrait {
+    position: absolute;
+    top: 25%;
+    left: 3%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+.pc .name {
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    position: absolute;
+    top: 27%;
+    left: 23%;
+    width: 30%;
+    color: #333;
+    font-weight: bold;
+}
+.pc .id {
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    position: absolute;
+    top: 44%;
+    left: 23%;
+    width: 30%;
+    color: #666;
+}
+.pc .member-type {
+    position: absolute;
+    top: 59%;
+    left: 23%;
+    width: 20%;
+    height: 18%;
+    border-radius: 8px;
+    color: #333;
+    font-size: 12px;
+    text-align: left;
+    line-height: 20px;
+}
+.pc .message {
+    position: absolute;
+    top: 5px;
+    right: 1%;
+    width: 10%;
+    height: 30px;
+    background: url(../icon/message.png) no-repeat center;
+    background-size: 20px;
+}
+.pc ul li:nth-child(1) {
+    float: left;
+    width: 96%;
+    height: 40px;
+    margin: 0px 2% 10px;
+    box-shadow: 0px 1px 5px pink,
+                0px -1px pink;
+    color: #999;
+    text-indent: 10px;
+    line-height: 40px;
+}
+.pc ul li span {
+    float: right;
+    height: 100%;
+    padding: 0 10px;
+}
+.pc ul li:nth-last-child(1) {
+    position: relative;
+    float: left;
+    width: 96%;
+    height: 40px;
+    margin: 0 2%;
+    margin-bottom: 10px;
+    box-shadow: 0px 1px 5px pink,
+                0px -1px pink;
+    color: #999;
+    text-indent: 10px;
+    line-height: 40px;
+}
+.pc ul li:nth-last-child(1) .list {
+    overflow: scroll;
+    position: absolute;
+    bottom: -300px;
+    width: 100%;
+    height: 300px;
+    box-shadow: 0px 1px 5px pink;
+}
+.pc ul li:nth-last-child(1) .list .list-info {
+    padding: 5px;
+    box-shadow: 0px 1px 5px pink,
+                0px -1px pink;
+}
+.pc ul li:nth-last-child(1) .list .list-info > h1,h2,h3,h4,h5 {
+    float: left;
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+}
+.pc ul li:nth-last-child(1) .list .list-info strong {
+    float: left;
+    height: 25px;
+    padding: 0 5px;
+    margin-left: 9px;
+    background-color: pink;
+    color: #fff;
+    text-indent: -1px;
+    line-height: 25px;
+}
+.pc .cancel-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99999999999999999;
+}
+.pc .cancel-mask .cancel-con {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 230px;
+    height: 90px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.pc .cancel-mask .cancel-con h1 {
+    float: left;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0px 1px pink;
+    font-size: 16px;
+    text-align: center;
+    line-height: 60px;
+}
+.pc .cancel-mask .cancel-con .confirm {
+    float: left;
+    width: 50%;
+    height: 35px;
+    box-shadow: 1px 0px pink;
+    text-align: center;
+    line-height: 35px;
+}
+.pc .cancel-mask .cancel-con .cancel {
+    float: left;
+    width: 50%;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+}
