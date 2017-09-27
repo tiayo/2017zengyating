@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-    <title>预约</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/style/home/css/reset.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/style/home/css/style.css') }}"/>
-    <script src="{{ asset('/style/home/js/jquery.min.js') }}"></script>
-</head>
-<body>
+@extends('home.layouts.app')
+
+@section('title', '预约')
+
+@section('body')
 <div class="barber">
     <div class="banner">
         <img src="{{ $manager['avatar'] }}" class="banner-pic" />
@@ -152,5 +146,4 @@
         });
     });
 </script>
-</body>
-</html>
+@endsection
