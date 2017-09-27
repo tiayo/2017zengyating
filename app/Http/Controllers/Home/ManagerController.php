@@ -27,10 +27,16 @@ class ManagerController extends Controller
         $this->request = $request;
     }
 
-    public function order($id)
+    /**
+     * 预约理发师
+     *
+     * @param $manager_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function order($manager_id)
     {
         //获取理发师信息
-        $manager = $this->manage->first($id);
+        $manager = $this->manage->first($manager_id);
 
         //获取服务项目
         $commodities = $this->commodity->getSimple('id', 'name');
@@ -41,6 +47,25 @@ class ManagerController extends Controller
         ]);
     }
 
+    /**
+     * 取消订单
+     *
+     * @param $order_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function orderCancel($order_id)
+    {
+        $this->order->changeStatus($order_id, 5);
+
+        return redirect()->route('home.index');
+    }
+
+    /**
+     * 添加预约
+     *
+     * @param $manager_id
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function addPost($manager_id)
     {
         $this->validate($this->request, [

@@ -98,13 +98,6 @@ class CommodityRepository
             ->delete();
     }
 
-    public function countGroup($group_id)
-    {
-        return $this->commodity
-            ->where('group', $group_id)
-            ->count();
-    }
-
     public function selectFirst($where, ...$select)
     {
         return $this->commodity

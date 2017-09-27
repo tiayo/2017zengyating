@@ -35,7 +35,8 @@ class OrderService
 
         //权限验证
         if (!can('admin', null, 'manager')) {
-            throw_if(!can('control', $first, 'manager'), Exception::class, '没有权限！', 403);
+            throw_if(!can('control', $first) && !can('control', $first, 'manager')
+                , Exception::class, '没有权限！', 403);
         }
 
         return $first;

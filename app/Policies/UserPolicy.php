@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrderPolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -16,6 +16,6 @@ class OrderPolicy
      */
     public function control($user, $order)
     {
-        return $order['user_id'] == $user['id'] || $order['manager_id'] == $user['id'] ;
+        return $order['manager_id'] == $user['id'];
     }
 }

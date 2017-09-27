@@ -19,6 +19,7 @@ $this->group(['namespace' => 'Home'], function () {
         //预约页面
         $this->get('order/{manager_id}', 'ManagerController@order')->name('home_order');
         $this->post('order/{manager_id}', 'ManagerController@addPost');
+        $this->get('order/cancel/{order_id}', 'ManagerController@orderCancel')->name('home_update');
     });
 });
 

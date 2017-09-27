@@ -111,9 +111,4 @@ class CommodityService
         //执行删除
         return $this->commodity->destroy($id);
     }
-
-    public function countGroup($group_id)
-    {
-        return $this->commodity->countGroup($group_id);
-    }
 }
