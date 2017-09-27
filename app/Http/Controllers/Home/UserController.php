@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $orders = $this->order->userGet();
 
-        return view('home.order.list', [
+        return view('home.user.list', [
             'lists' => $orders,
             'user' => Auth::guard()->user()
         ]);

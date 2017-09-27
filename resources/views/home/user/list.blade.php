@@ -15,7 +15,7 @@
     <ul>
         <li>
             我的积分
-            <span>{{ $user['score'] }}</span>
+            <span>{{ $user->profile->score }}</span>
         </li>
         <li>
             我的预约
