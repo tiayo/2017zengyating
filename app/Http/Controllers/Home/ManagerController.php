@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use App\Services\Home\OrderService;
+use App\Services\Manage\OrderService;
 use App\Services\Manage\CommodityService;
 use App\Services\Manage\ManagerService;
 use Carbon\Carbon;
@@ -55,7 +55,11 @@ class ManagerController extends Controller
      */
     public function orderCancel($order_id)
     {
-        $this->order->changeStatus($order_id, 5);
+        try {
+            $this->order->changeStatus($order_id, 5);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+        }
 
         return redirect()->route('home_user');
     }

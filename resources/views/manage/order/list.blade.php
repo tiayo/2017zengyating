@@ -19,6 +19,18 @@
 @section('body')
 <div class="row">
     <div class="col-md-12">
+        <!--错误输出-->
+        <div class="form-group">
+            <div class="alert alert-danger fade in @if(!count($errors) > 0) hidden @endif" id="alert_error">
+                <a href="#" class="close" data-dismiss="alert">×</a>
+                <span>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </span>
+            </div>
+        </div>
+
 		<section class="panel">
             <div class="panel-body">
                 <form class="form-inline" id="search_form">

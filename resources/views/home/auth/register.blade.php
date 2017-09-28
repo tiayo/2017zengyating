@@ -10,7 +10,7 @@
     <div class="title">
         用户注册
     </div>
-    <form action="{{ route('home.register') }}" method="post" id="form">
+    <form action="{{ route('home.register') }}" enctype="multipart/form-data" method="post" id="form">
         {{ csrf_field() }}
         <div id="registration-dialog">
             <div id="user">
@@ -22,8 +22,11 @@
             <div id="user">
                 <input type="password" name="password" placeholder="请输入密码"/>
             </div>
-            <div id="password">
+            <div id="user">
                 <input type="password" name="password_confirmation" placeholder="请确认密码"/>
+            </div>
+            <div id="password">
+                <input type="file" name="avatar"/>
             </div>
             @foreach($errors->all() as $error)
                 <div class="error">{{ $error }}</div>

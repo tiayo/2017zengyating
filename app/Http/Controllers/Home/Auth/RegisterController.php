@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home\Auth;
 
 use App\Profile;
+use App\Services\ImageService;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, ImageService;
 
     /**
      * Where to redirect users after registration.
@@ -57,6 +58,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'avatar' => 'file|image',
         ]);
     }
 
@@ -68,11 +70,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //有上传图片时处理
+        if (isset($data['avatar'])) {
+            $avatar = $this->uploadImage($data['avatar']);
+        }
+
         //注册会员
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'avatar' => $avatar ?? null,
         ]);
 
         //注册会员卡

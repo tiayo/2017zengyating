@@ -6,16 +6,19 @@ use App\Repositories\OrderRepository;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use App\Profile;
 
 class OrderService
 {
     protected $order;
     protected $commodity;
+    protected $profile;
 
-    public function __construct(OrderRepository $order, CommodityService $commodity)
+    public function __construct(OrderRepository $order, CommodityService $commodity, Profile $profile)
     {
         $this->order = $order;
         $this->commodity = $commodity;
+        $this->profile = $profile;
     }
 
     /**
@@ -34,7 +37,8 @@ class OrderService
 
         //权限验证
         if (!can('admin', null, 'manager')) {
-            throw_if(!can('control', $first, 'manager'), Exception::class, '没有权限！', 403);
+            throw_if(!can('control', $first) && !can('control', $first, 'manager')
+                , Exception::class, '没有权限！', 403);
         }
 
         return $first;
@@ -55,16 +59,6 @@ class OrderService
     }
 
     /**
-     * 统计完成状态订单的金额总和
-     *
-     * @return mixed
-     */
-    public function sumPrice()
-    {
-        return $this->order->sumPrice();
-    }
-
-    /**
      * 获取需要的数据(理发师级别)
      *
      * @return mixed
@@ -81,8 +75,7 @@ class OrderService
     /**
      * 获取需要的数据(用户级别)
      *
-     * @param $num
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return mixed
      */
     public function userGet()
     {
@@ -99,9 +92,29 @@ class OrderService
     public function changeStatus($order_id, $status)
     {
         //权限验证
-        $this->validata($order_id);
+        $order = $this->validata($order_id);
+
+        //预约为等待和接受状态时可以修改状态
+        throw_if($order['status'] != 0 && $order['status'] != 1,
+            Exception::class, '当前预约状态不可修改！', 403);
+
+        //订单状态修改为完成时进行操作
+        $status == 4 ? $this->completeOrder($order) : true;
 
         return $this->order->update($order_id, ['status' => $status]);
+    }
+
+    /**
+     * 完成预约累加积分
+     *
+     * @param $order
+     * @return mixed
+     */
+    public function completeOrder($order)
+    {
+        return $this->profile
+            ->where('user_id', $order['user_id'])
+            ->increment('score', $order['score']);
     }
 
     /**
@@ -122,12 +135,13 @@ class OrderService
      * @param null $id
      * @return mixed
      */
-    public function updateOrCreate($post, $id)
+    public function updateOrCreate($post, $id = null)
     {
         //判断时间段是否可以预约
         $this->canOrder($post, $id);
 
         //统计数据
+        $data['user_id'] = Auth::guard('web')->id();
         $data['commodity'] = serialize($post['commodity']);
         $data['manager_id'] = $post['manager_id'];
         $data['order_time'] = $post['order_time'];
@@ -138,7 +152,7 @@ class OrderService
         $data['price'] = $value['price'];
 
         //执行插入或更新
-        return $this->order->update($id, $data);
+        return empty($id) ? $this->order->create($data) : $this->order->update($id, $data);
     }
 
     /**
@@ -194,15 +208,5 @@ class OrderService
 
         //执行删除
         return $this->order->destroy($id);
-    }
-
-    /**
-     * 按需求统计
-     *
-     * @param $where
-     * @return mixed
-     */
-    public function count($where){
-        return $this->order->count($where);
     }
 }

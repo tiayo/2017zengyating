@@ -73,9 +73,13 @@ class OrderController extends Controller
      */
     public function changeStatus($order_id, $status)
     {
-       if ($this->order->changeStatus($order_id, $status)) {
-           return redirect()->back();
-       }
+        try {
+            $this->order->changeStatus($order_id, $status);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+
+        return redirect()->route('order_list');
     }
 
     /**
