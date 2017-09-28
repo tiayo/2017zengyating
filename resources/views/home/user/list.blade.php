@@ -33,8 +33,16 @@
         </div>
         <ul>
             <li>
+                我的邮箱
+                <span>{{ $user['email'] }}</span>
+            </li>
+            <li>
                 我的积分
                 <span>{{ $score }}</span>
+            </li>
+            <li>
+                我的电话
+                <span>{{ $user->profile->phone }}</span>
             </li>
             <li>
                 我的预约

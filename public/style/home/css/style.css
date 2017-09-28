@@ -662,7 +662,7 @@
     background: url(../icon/message.png) no-repeat center;
     background-size: 20px;
 }
-.pc ul li:nth-child(1) {
+.pc ul li:nth-child(1),li:nth-child(2),li:nth-child(3) {
     float: left;
     width: 96%;
     height: 40px;
@@ -673,6 +673,7 @@
     text-indent: 10px;
     line-height: 40px;
 }
+
 .pc ul li span {
     float: right;
     height: 100%;
