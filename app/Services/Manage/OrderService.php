@@ -209,4 +209,13 @@ class OrderService
         //执行删除
         return $this->order->destroy($id);
     }
+    /**
+     * 按需求统计
+     *
+     * @param $where
+     * @return mixed
+     */
+    public function count($where){
+        return $this->order->count($where);
+    }
 }
