@@ -218,4 +218,14 @@ class OrderService
     public function count($where){
         return $this->order->count($where);
     }
+
+    /**
+     * 统计完成状态订单的金额总和
+     *
+     * @return mixed
+     */
+    public function sumPrice()
+    {
+        return $this->order->sumPrice();
+    }
 }
