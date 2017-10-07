@@ -67,7 +67,7 @@
                             <td>{{ $list->user->name }}</td>
                             <td>
                                 @foreach(unserialize($list['commodity']) as $commodity)
-                                    {{ \App\Commodity::select('name')->find($commodity)->name }} <br >
+                                    {{ \App\Commodity::select('name')->find($commodity)['name'] }} <br >
                                 @endforeach
                             </td>
                             <td>{{ $list['score'] }}</td>
