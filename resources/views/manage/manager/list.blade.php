@@ -48,8 +48,8 @@
                         @foreach($lists as $list)
                         <tr>
                             <td>{{ $list['id'] }}</td>
-                            <td>{{ $list->store->name }}</td>
                             <td>{{ $list['name'] }}</td>
+                            <td>{{ $list->store->name }}</td>
                             <td>{{ $list['phone'] }}</td>
                             <td>{{ $list['email'] }}</td>
                             <td>{{ config('site.manager_group')[$list['type']] }}</td>
