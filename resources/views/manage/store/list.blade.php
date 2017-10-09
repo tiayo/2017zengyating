@@ -44,6 +44,7 @@
 		            <tbody id="target">
                         @foreach($lists as $list)
                         <tr>
+                            <td>{{ $list['id'] }}</td>
                             <td>{{ $list['name'] }}</td>
                             <td>{{ $list['address'] }}</td>
                             <td>{{ $list['phone'] }}</td>
