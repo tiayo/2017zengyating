@@ -54,7 +54,7 @@
                             <h3>{{ $list->manager->name }}</h3>
                             <h4>{{ config('site.order_status')[$list['status']] }}</h4>
                             <h5>@foreach(unserialize($list['commodity']) as $commodity)
-                                    <em>{{ \App\Commodity::select('name')->find($commodity)->name }}</em>
+                                    <em>{{ \App\Commodity::select('name')->find($commodity)->name ?? '未知' }}</em>
                                 @endforeach
                             </h5>
                             <strong data-id="{{ $list['id'] }}">取消预约</strong>
