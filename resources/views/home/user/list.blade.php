@@ -49,9 +49,9 @@
                 <div class="list">
                     @foreach($lists as $list)
                         <div class="list-info clearfix" >
-                            <h1>{{ \App\Manager::find($list['manager_id'])->store->name }}</h1>
+                            <h1>{{ \App\Manager::find($list['manager_id'])->store->name ?? '未知' }}</h1>
                             <h2>{{ $list['order_time'] }}</h2>
-                            <h3>{{ $list->manager->name }}</h3>
+                            <h3>{{ $list->manager->name ?? '未知' }}</h3>
                             <h4>{{ config('site.order_status')[$list['status']] }}</h4>
                             <h5>@foreach(unserialize($list['commodity']) as $commodity)
                                     <em>{{ \App\Commodity::select('name')->find($commodity)->name ?? '未知' }}</em>
