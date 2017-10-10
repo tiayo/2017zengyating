@@ -10,17 +10,17 @@
 @section('body')
 <div class="store">
     <div class="swiper-container bigpic clearfix">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="../images/1.jpg"/>
-            </div>
-            <div class="swiper-slide">
-                <img src="../images/2.jpg"/>
-            </div>
-            <div class="swiper-slide">
-                <img src="../images/1.jpg"/>
-            </div>
-        </div>
+        {{--<div class="swiper-wrapper">--}}
+            {{--<div class="swiper-slide">--}}
+                {{--<img src="../images/1.jpg"/>--}}
+            {{--</div>--}}
+            {{--<div class="swiper-slide">--}}
+                {{--<img src="../images/2.jpg"/>--}}
+            {{--</div>--}}
+            {{--<div class="swiper-slide">--}}
+                {{--<img src="../images/1.jpg"/>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         <!-- 分页器 -->
         <div class="swiper-pagination"></div>
     </div>
