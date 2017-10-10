@@ -113,7 +113,7 @@ class ManagerService
         }
 
         //有上传图片时处理
-        if (isset($data['avatar'])) {
+        if (isset($post['avatar'])) {
             $data['avatar'] = $this->uploadImage($post['avatar']);
         }
 
