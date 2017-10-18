@@ -92,7 +92,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                                @if ($sign == 'admin')
+                                @if (can('admin', null, 'manager'))
                                     <button class="btn btn-info" type="button" onclick="location='{{ route('order_update', ['id' => $list['id'] ]) }}'">编辑</button>
                                     <button class="btn btn-danger" type="button" onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('order_destroy', ['id' => $list['id'] ]) }}'">删除</button>
                                 @endif
