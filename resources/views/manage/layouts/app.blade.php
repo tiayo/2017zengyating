@@ -55,7 +55,7 @@
         <!-- header section start-->
         <div class="header-section">
             <!--toggle button start-->
-            <a style="color: black" href="#" class="btn" data-toggle="dropdown">欢迎：{{ Auth::guard('manager')->user()['name'] }}</a>
+            <a style="color: black" class="btn" data-toggle="dropdown">欢迎：{{ Auth::guard('manager')->user()['name'] }}</a>
             <!--toggle button end-->
             <!--search start-->
             {{--<form class="searchform" id="searchform_id">--}}
@@ -68,7 +68,7 @@
 
                     </li>
                     <li>
-                        <a style="color: black" href="{{ route('manage.logout') }}" class="btn" data-toggle="dropdown">退出登录</a>
+                        <a style="color: black" onclick="location='{{ route('manage.logout') }}'" class="btn" data-toggle="dropdown">退出登录</a>
                     </li>
 
                 </ul>
