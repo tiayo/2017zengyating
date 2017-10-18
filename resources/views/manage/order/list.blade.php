@@ -64,7 +64,7 @@
                         @foreach($lists as $list)
                         <tr>
                             <td>{{ $list['id'] }}</td>
-                            <td>{{ $list->user->name }}</td>
+                            <td>{{ $list->user->name ?? '不存在' }}</td>
                             <td>
                                 @foreach(unserialize($list['commodity']) as $commodity)
                                     {{ \App\Commodity::select('name')->find($commodity)['name'] }} <br >
@@ -73,7 +73,7 @@
                             <td>{{ $list['score'] }}</td>
                             <td>{{ $list['price'] }}</td>
                             <td>{{ $list['order_time'] }}</td>
-                            <td>{{ $list->manager->name }}</td>
+                            <td>{{ $list->manager->name ?? '不存在' }}</td>
                             <td>{{ config('site.order_status')[$list['status']] }}</td>
                             <td>{{ $list['created_at'] }}</td>
                             <td>
