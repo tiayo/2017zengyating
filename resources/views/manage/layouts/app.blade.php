@@ -74,7 +74,7 @@
         <!--body wrapper end-->
 
         <!--footer section start-->
-        <footer style="bottom: 0;position: fixed;">Copyright © 2015 - {{ date('Y') }} 曾雅婷 All Rights Reserved  <strong>v1.0</strong></footer>
+        <footer style="bottom: 0;position: fixed;">曾雅婷 版权所有<strong>v1.0</strong></footer>
         <!--footer section end-->
 
 

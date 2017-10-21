@@ -15,6 +15,8 @@
 @section('body')
     <div class="row">
         <div class="col-sm-12">
+            <h2 style="text-align: center">欢迎回来！</h2>
+            <h5 style="text-align: right">{{ date('Y-m-d') }}</h5>
             <section class="panel">
                 <header class="panel-heading">
                     {{ config('site.title') }} 运营统计
