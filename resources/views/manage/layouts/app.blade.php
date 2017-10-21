@@ -51,6 +51,30 @@
     <!-- main content start-->
     <div class="main-content" >
 
+        <!-- header section start-->
+        <div class="header-section">
+            <!--toggle button start-->
+            <a style="color: black" class="btn" data-toggle="dropdown">欢迎：{{ Auth::guard('manager')->user()['name'] }}</a>
+            <!--toggle button end-->
+            <!--search start-->
+            {{--<form class="searchform" id="searchform_id">--}}
+                {{--<input type="text" class="form-control" name="keyword" value="" placeholder="Search here..." />--}}
+            {{--</form>--}}
+            <!--search end-->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    <li>
+
+                    </li>
+                    <li>
+                        <a style="color: black" onclick="location='{{ route('manage.logout') }}'" class="btn" data-toggle="dropdown">退出登录</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- header section end-->
+
         <!--body wrapper start-->
         <div class="wrapper">
             {{--面包屑开始--}}

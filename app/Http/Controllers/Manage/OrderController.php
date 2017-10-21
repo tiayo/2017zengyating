@@ -55,7 +55,9 @@ class OrderController extends Controller
     {
         $num = config('site.list_num');
 
-        $orders = $this->order->managerGet($num, $keyword);
+        $orders = can('admin', null, 'manager') ?
+            $this->order->get($num, $keyword) :
+            $this->order->managerGet($num, $keyword);
 
         return view('manage.order.list', [
             'lists' => $orders,
