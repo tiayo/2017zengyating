@@ -1,9 +1,5 @@
 <!--sidebar nav start-->
-<ul style="margin-top:100px;" class="nav nav-pills nav-stacked custom-nav">
-
-    <li class="menu-list" id="nav_3">
-        <a href="#" onclick="location='{{ route('manage') }}'"><i class="fa fa-star"></i> <span>主页</span></a>
-    </li>
+<ul style="margin-top:80px;" class="nav nav-pills nav-stacked custom-nav">
 
     @if(can('admin', null, 'manager'))
         <li class="menu-list active nav-active" id="nav_0"><a href=""><i class="fa fa-user"></i> <span>管理专区</span></a>
@@ -21,6 +17,10 @@
         <ul class="sub-menu-list">
             <li id="nav_1_1"><a href="{{ route('manager_order_list') }}"><i class="fa fa-pinterest"></i> 我的预约</a></li>
         </ul>
+    </li>
+
+    <li class="menu-list">
+        <a href="#" onclick="location='{{ route('manage.logout') }}'"><i class="fa fa-sign-out"></i> <span>退出登录</span></a>
     </li>
 </ul>
 <!--sidebar nav end-->

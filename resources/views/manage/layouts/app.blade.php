@@ -35,8 +35,7 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <img style="width:200px" src="{{ asset('/style/home/images/logo_2.png') }}" alt="">
-            <a href="/"></a>
+           <h3 style="text-align: center;">{{ config('site.title') }}</h3>
         </div>
 
         <div class="logo-icon text-center">
@@ -51,37 +50,6 @@
 
     <!-- main content start-->
     <div class="main-content" >
-
-        <!-- header section start-->
-        <div class="header-section">
-            <!--toggle button start-->
-            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
-            <!--toggle button end-->
-            <!--search start-->
-            {{--<form class="searchform" id="searchform_id">--}}
-                {{--<input type="text" class="form-control" name="keyword" value="" placeholder="Search here..." />--}}
-            {{--</form>--}}
-            <!--search end-->
-            <div class="menu-right">
-                <ul class="notification-menu">
-                    <li>
-
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            当前帐号:
-                            {{ Auth::guard('manager')->user()['name'] }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                            <li><a href="{{ route('manage.logout') }}"><i class="fa fa-sign-out"></i>退出登录</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <!-- header section end-->
 
         <!--body wrapper start-->
         <div class="wrapper">
