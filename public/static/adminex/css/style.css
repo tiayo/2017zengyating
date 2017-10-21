@@ -3,16 +3,16 @@ Template Name: AdminEx Dashboard
 Author: ThemeBucket
 -------------------------------------------*/
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);*/
 @import url('bootstrap.min.css');
 @import url('bootstrap-reset.css');
 @import url('jquery-ui-1.10.3.css');
 @import url('../fonts/css/font-awesome.min.css');
 
 body {
-    background: #cb255f;
+    background: #fff;
     font-family: 'Open Sans', sans-serif;
-    color: #7a7676;
+    color: #666;
     line-height: 20px;
     overflow-x: hidden;
     font-size: 14px;
@@ -24,7 +24,7 @@ input, select, textarea {
 }
 
 a {
-    color: #65CEA7;
+    color: #ccc;
 }
 
 a:focus, a:active, a:hover {
@@ -290,7 +290,7 @@ hr {
 }
 
 .custom-nav > li > a {
-    color: #fff;
+    color: #666;
     padding: 12px 20px;
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -298,8 +298,8 @@ hr {
 
 .custom-nav > li > a:hover,
 .custom-nav > li > a:active {
-    background-color: #991b47;
-    color: #65cea7;
+    background-color: #fff;
+    color: #666;
     border-radius: 0;
     -webkit-border-radius: 0;
 }
@@ -309,7 +309,7 @@ hr {
 }
 
 .custom-nav > li.menu-list > a:hover {
-    background-color: #991b47;
+    background-color: #fff;
     background-image: url(../images/plus.png);
 }
 
@@ -330,8 +330,8 @@ hr {
 .custom-nav > li.active > a,
 .custom-nav > li.active > a:hover,
 .custom-nav > li.active > a:focus {
-    background-color: #991b47;
-    color: #fff;
+    background-color: #fff;
+    color: #666;
 }
 
 .custom-nav > li.menu-list.active > a {
@@ -362,7 +362,7 @@ hr {
 }
 
 .custom-nav .sub-menu-list > li > a {
-    color: #fff;
+    color: #666;
     font-size: 13px;
     display: block;
     padding: 10px 5px 10px 50px;
@@ -375,8 +375,8 @@ hr {
 .custom-nav .sub-menu-list > li > a:active,
 .custom-nav .sub-menu-list > li > a:focus {
     text-decoration: none;
-    color: #fff;
-    background: #991b47;
+    color: #333;
+    background: #fff;
 }
 
 .custom-nav .sub-menu-list > li .fa {
@@ -389,8 +389,8 @@ hr {
 }
 
 .custom-nav .sub-menu-list > li.active > a {
-    color: #fff;
-    background-color: #991b47;
+    color: #666;
+    background-color: #ccc;
 }
 
 .custom-nav .sub-menu-list ul {
@@ -844,8 +844,7 @@ h5.left-nav-title {
     left: 0;
     width: 240px;
     z-index: 100;
-    background: #cb255f;
-
+    background: #fff;
 }
 
 .sticky-header .left-side {
@@ -858,10 +857,6 @@ h5.left-nav-title {
     left: 240px;
     width: 100%;
     z-index: 100;
-}
-
-.sticky-header .main-content {
-    padding-top: 50px;
 }
 
 .sticky-header .menu-right {
