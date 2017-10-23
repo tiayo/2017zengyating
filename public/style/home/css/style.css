@@ -79,7 +79,6 @@
 }
 .index .shop .shop-info {
     width: 94%;
-    height: 130px;
     margin: 10px 3%;
     background-color: #f5f5f5;
     box-shadow: 0px 2px 4px #000;
@@ -109,24 +108,23 @@
     position: absolute;
     top: 35px;
     left: 80px;
+    height: 20px;
+    line-height: 20px;
 }
 .index .shop .shop-info-bottom {
-    position: relative;
-    height: 45px;
+    padding: 20px;
     background-color: #fff;
     border-bottom: 1px dashed #000;
 }
 .index .shop .shop-info-bottom h1 {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
+    float: left;
+    width: 100%;
 }
 .index .shop .shop-info-bottom .subscribe {
-    position: absolute;
-    top: 12px;
-    right: 10px;
+    float: left;
     width: 50px;
     height: 20px;
+    margin-top: 10px;
     border: 1px solid pink;
     text-align: center;
     line-height: 20px;
@@ -240,14 +238,14 @@
     margin: 5px 2.5%;
     background-color: #fff;
     box-shadow: 1px -1px #999,
-               -1px 1px #999;
+    -1px 1px #999;
     text-align: center;
     line-height: 25px;
 }
 .barber .time .time-con .time-info .time-active {
     color: pink;
     box-shadow: 1px -1px pink,
-               -1px 1px pink;
+    -1px 1px pink;
 }
 .barber .confirm {
     position: fixed;
@@ -327,14 +325,14 @@
     margin: 10px 3%;
     background-color: #fff;
     box-shadow: 1px -1px #999,
-               -1px 1px #999;
+    -1px 1px #999;
     text-align: center;
     line-height: 25px;
 }
 .barber .barber-mask .projects .projects-active {
     color: pink;
     box-shadow: 1px -1px pink,
-               -1px 1px pink;
+    -1px 1px pink;
 }
 .barber .barber-mask .mask-bottom {
     position: absolute;
@@ -403,7 +401,6 @@
 }
 .store .barberList .barberList-info {
     width: 94%;
-    height: 130px;
     margin: 10px 3%;
     background-color: #f5f5f5;
     box-shadow: 0px 2px 4px #000;
@@ -433,24 +430,23 @@
     position: absolute;
     top: 35px;
     left: 80px;
+    height: 20px;
+    line-height: 20px;
 }
 .store .barberList .barberList-info-bottom {
-    position: relative;
-    height: 45px;
+    padding: 20px;
     background-color: #fff;
     border-bottom: 1px dashed #000;
 }
 .store .barberList .barberList-info-bottom h1 {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
+    float: left;
+    width: 100%;
 }
 .store .barberList .barberList-info-bottom .subscribe {
-    position: absolute;
-    top: 12px;
-    right: 10px;
+    float: left;
     width: 50px;
     height: 20px;
+    margin-top: 10px;
     border: 1px solid pink;
     text-align: center;
     line-height: 20px;
@@ -531,7 +527,7 @@
     margin: 0 13% 10px;
     background-color: #fff;
     box-shadow: 1px 1px pink inset,
-                -1px -1px pink inset;
+    -1px -1px pink inset;
     color: pink;
     font-size: 16px;
     letter-spacing: 10px;
@@ -662,18 +658,17 @@
     background: url(../icon/message.png) no-repeat center;
     background-size: 20px;
 }
-.pc ul li:nth-child(1),li:nth-child(2),li:nth-child(3) {
+.pc ul li:nth-child(1) {
     float: left;
     width: 96%;
     height: 40px;
     margin: 0px 2% 10px;
     box-shadow: 0px 1px 5px pink,
-                0px -1px pink;
+    0px -1px pink;
     color: #999;
     text-indent: 10px;
     line-height: 40px;
 }
-
 .pc ul li span {
     float: right;
     height: 100%;
@@ -687,7 +682,7 @@
     margin: 0 2%;
     margin-bottom: 10px;
     box-shadow: 0px 1px 5px pink,
-                0px -1px pink;
+    0px -1px pink;
     color: #999;
     text-indent: 10px;
     line-height: 40px;
@@ -703,7 +698,7 @@
 .pc ul li:nth-last-child(1) .list .list-info {
     padding: 5px;
     box-shadow: 0px 1px 5px pink,
-                0px -1px pink;
+    0px -1px pink;
 }
 .pc ul li:nth-last-child(1) .list .list-info > h1,h2,h3,h4,h5 {
     float: left;

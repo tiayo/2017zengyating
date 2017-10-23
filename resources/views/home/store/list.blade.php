@@ -16,7 +16,7 @@
                     <h1>{{ $store['name'] }}</h1>
                     <a href="tel:{{ $store['phone'] }}" class="tel"></a>
                 </div>
-                <div class="shop-info clearfix">
+                <div class="shop-info-bottom clearfix">
                     <div class="shop-info-top">
                         <img src="{{ $store['avatar'] }}" class="portrait" />
                         <h1>{{ $store['phone'] }}</h1>

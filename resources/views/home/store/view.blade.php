@@ -32,7 +32,7 @@
             </div>
 
             @foreach($managers as $manager)
-                <div class="barberList-info clearfix">
+                <div class="barberList-info-bottom clearfix">
                     <div class="barberList-info-top">
                         <img src="{{ $manager['avatar'] }}" class="portrait"/>
                         <h1>{{ $manager['name'] }}</h1>
