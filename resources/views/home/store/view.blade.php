@@ -32,13 +32,13 @@
             </div>
 
             @foreach($managers as $manager)
-                <div class="barberList-info-bottom clearfix">
+                <div class="barberList-info clearfix">
                     <div class="barberList-info-top">
                         <img src="{{ $manager['avatar'] }}" class="portrait"/>
                         <h1>{{ $manager['name'] }}</h1>
                         <h2>{{ config('site.manager_group')[$manager['type']] }}</h2>
                     </div>
-                    <div class="barberList-info-bottom">
+                    <div class="barberList-info-bottom clearfix">
                         <h1>{{ $manager['introduce'] }}~</h1>
                         <a href="{{ route('home_order', ['manager_id' => $manager['id']]) }}" class="subscribe">预约</a>
                     </div>

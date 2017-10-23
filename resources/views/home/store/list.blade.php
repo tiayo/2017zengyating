@@ -16,13 +16,13 @@
                     <h1>{{ $store['name'] }}</h1>
                     <a href="tel:{{ $store['phone'] }}" class="tel"></a>
                 </div>
-                <div class="shop-info-bottom clearfix">
+                <div class="shop-info clearfix">
                     <div class="shop-info-top">
                         <img src="{{ $store['avatar'] }}" class="portrait" />
                         <h1>{{ $store['phone'] }}</h1>
                         <h2>{{ $store['address'] }}</h2>
                     </div>
-                    <div class="shop-info-bottom">
+                    <div class="shop-info-bottom clearfix">
                         <h1>{{ $store['description'] }}</h1>
                         <a href="{{ route('home_store_view', ['store_id' => $store['id']]) }}" class="subscribe">预约</a>
                     </div>
