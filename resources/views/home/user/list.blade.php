@@ -29,20 +29,13 @@
                         }
                     @endphp
                 </span>
+                <span class="tuichu" onclick="location='{{ route('home.logout') }}'">退出</span>
             </div>
         </div>
         <ul>
             <li>
-                我的邮箱
-                <span>{{ $user['email'] }}</span>
-            </li>
-            <li>
                 我的积分
                 <span>{{ $score }}</span>
-            </li>
-            <li>
-                我的电话
-                <span>{{ $user->profile->phone }}</span>
             </li>
             <li>
                 我的预约

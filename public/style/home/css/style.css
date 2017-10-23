@@ -658,6 +658,20 @@
     background: url(../icon/message.png) no-repeat center;
     background-size: 20px;
 }
+.pc .tuichu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 15px;
+    margin: auto 0;
+    width: 50px;
+    height: 20px;
+    box-shadow: 1px 1px #fff,
+    -1px -1px #fff;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+}
 .pc ul li:nth-child(1) {
     float: left;
     width: 96%;
