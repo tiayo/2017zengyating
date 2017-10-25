@@ -48,10 +48,6 @@
                             <td>{{ $list->profile->score }}</td>
                             <td>{{ $list['created_at'] }}</td>
                             <td>
-                                <button class="btn btn-info" type="button"
-                                        onclick="location=''">
-                                    查看预约
-                                </button>
                                 <button class="btn btn-danger" type="button"
                                         onclick="javascript:if(confirm('确实要删除吗?'))location='{{ route('user_destroy', ['id' => $list['id'] ]) }}'">
                                     删除会员

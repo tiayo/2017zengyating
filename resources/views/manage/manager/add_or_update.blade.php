@@ -54,8 +54,7 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-sm-2 control-label">姓名</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="name" name="name" value="{{ $old_input['name'] }}"
-                                   @if($sign == 'update') readonly @elseif($sign == 'add') required @endif>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $old_input['name'] }}" required>
                         </div>
                     </div>
                     <div class="form-group">
